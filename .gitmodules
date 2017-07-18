@@ -1,0 +1,3 @@
+[submodule "hcz-jekyll-blog"]
+	path = hcz-jekyll-blog
+	url = git@github.com:codeasashu/hcz-jekyll-blog.git
