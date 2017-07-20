@@ -1,17 +1,22 @@
 ---
 layout: page
-title: About
+title: Sobre
 permalink: /about/
 ---
 
-Hi there
+Ora viva,
 
-Well looks that i have to write a little about me =)
+Já faz algum tempo que andava afastado deste mundo dos blogs e companhia, e achei
+que estava na hora de voltar a fazer um projecto do género.
+Este projecto vai server como um repositório de experiencias e dicas na área de programaçao e sistemas.
 
-Well I'm 26 years old , from a small town called São Mamede that belongs to Leiria District . I've started my tech adventure in 2004 , taking a High School course relative to IT technician , during this course I've started gain a passion for the web development and system administration.
+Mas como todos os primeiros artigos/posts numa comunidade web, irei fazer uma pequena apresentaçao.
 
-At this moment i have +5 year of experience related to web development using languages like php , html,css,js , in the recent months I've start working with coffeescript , sass and mongodb techs. Besides that on my SysAdmin experience i've worked with nginx/apache web servers , mysql and mongodb databases , docker/jails/vmware/vagrant for virtualization and containers services.
+Tenho neste momento 27 anos , e sou programador numa empresa que faz desenvolvimento para **SAP**.
+Tenho desenvolvido nos ultimos anos em **PHP** , **Javascript**, **Mysql/Mongodb**, **Python/Ruby**, sendo que este ano
+tenho aprofundado mais os meus conhecimentos em **c#/vb.net** e **python**.
 
-On my free time , i'm a volunteer firefigher on the firehouse of my town.
+Além da área de programação, tambem tenho experiencia em gestão de servidores Linux,
+mais concretamente com as distribuições Debian/Arch/Fedora.
 
-Any doubt or question , just ask =)
+No meu tempo livre sou praticante de Karaté e bombeiro voluntário.

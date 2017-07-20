@@ -3,15 +3,15 @@ description: Personal Blog
 author: Rubem Mota
 logo: /static/img/avatar.png
 github: https://github.com/rubemlrm
-about: Developer
+about: Programador / Administrador de Sistemas
 
 baseurl: ""
 url: ""
 
 allowsearch: true
 
-disqus_shortname:
-google_analytics:
+disqus_shortname: rubemlrmcom
+google_analytics: 'UA-39203492-1'
 
 share:
   twitter_username: rubemlrm
