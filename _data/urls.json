@@ -6,19 +6,19 @@
     "layout": "post"
   },
   {
-    "text": "About",
+    "text": "Sobre",
     "url": "/about/",
     "icon": "fa-comments"
   },
   {
-    "text": "Projects",
+    "text": "Projectos",
     "url": "/projects",
     "icon": "fa-desktop"
   },
   {
-    "text": "Resume",
+    "text": "Curriculum Vitae",
     "url": "https://www.linkedin.com/in/rubemlrm/",
-    "icon": "fa-graduation-cap",
+    "icon": "fa-graduation-cap"
   },
   {
     "text": "Github",
@@ -26,7 +26,7 @@
     "icon": "fa-github"
   },
   {
-    "text": "XML Feed",
+    "text": "Feed",
     "url": "/feed.xml",
     "icon": "fa-feed",
     "target": _blank
