@@ -7,7 +7,8 @@ categories:
 - Archlinux
 - Tutorial
 ---
-<img class="aligncenter" alt="" src="https://www.archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png" width="383" height="321" />
+
+!["arch logo"](https://www.archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png)
 
 Como utilizador de archlinux já há uns anos , surgiu a necessidade de instalar pacotes que estão disponíveis no AUR . No entanto instalar software que está disponível no AUR pode ser um pouco demoroso e tive necessidade de encontrar uma alternativa viável que me pudesse gerir as instalações a partir do AUR como a partir dos repos oficiais. Como tal encontrei o software yaourt que funciona como gestor de pacotes.Umas das principais mais valias deste gestor de pacotes é que dá para gerir de forma centralizada a instalação dos pacotes tanto de repos AUR como de repos oficias.
 
