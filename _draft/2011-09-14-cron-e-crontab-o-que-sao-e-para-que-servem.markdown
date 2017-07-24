@@ -1,0 +1,72 @@
+---
+layout: post
+status: publish
+published: true
+title: Cron e crontab o que s&atilde;o ? E para que servem?
+author:
+  display_name: Rubem Mota
+  login: Rubemlrm
+  email: rubemmota89@gmail.com
+  url: http://rubemlrm.com
+author_login: Rubemlrm
+author_email: rubemmota89@gmail.com
+author_url: http://rubemlrm.com
+excerpt: "Certamente muitos de v&oacute;s j&aacute; se depararam com estes 2 termos
+  e questionaram-se sobre o que seriam e que fun&ccedil;&atilde;o desempenhavam .Ambos
+  s&atilde;o processos que s&atilde;o exclusivos de sistemas UNIX ou seja linux e
+  openbsd entre outros.\r\n\r\nO crontab serve de&nbsp; arquivo para as tarefas que
+  queremos que sejam automatizadas como por exemplo: fazer backups , apagar ficheiros
+  , corrigir erros do sistema , actualizar o sistema, entre outras coisas. Enquanto
+  que o Cron vai utilizar esse arquivo e vai verificar de x em x tempo se a tarefa
+  j&aacute; foi executada ou ainda est&aacute; a ser executada e verifica tamb&eacute;m
+  a quanto tempo foi executada. Caso ainda n&atilde;o tenha sido executada o cron
+  ir&aacute; executar essa tarefa de forma aut&oacute;noma e ir&aacute; ter o nome
+  de cronjob. De referir que &eacute; tudo executado na shell do sistema (terminal).\r\n\r\n"
+wordpress_id: 15
+wordpress_url: http://rubemlrm.com/?p=15
+date: '2011-09-14 19:57:11 +0000'
+date_gmt: '2011-09-14 19:57:11 +0000'
+categories: []
+tags: []
+comments: []
+---
+<p>Certamente muitos de vós já se depararam com estes 2 termos e questionaram-se sobre o que seriam e que função desempenhavam .Ambos são processos que são exclusivos de sistemas UNIX ou seja linux e openbsd entre outros.</p>
+<p>O crontab serve de  arquivo para as tarefas que queremos que sejam automatizadas como por exemplo: fazer backups , apagar ficheiros , corrigir erros do sistema , actualizar o sistema, entre outras coisas. Enquanto que o Cron vai utilizar esse arquivo e vai verificar de x em x tempo se a tarefa já foi executada ou ainda está a ser executada e verifica também a quanto tempo foi executada. Caso ainda não tenha sido executada o cron irá executar essa tarefa de forma autónoma e irá ter o nome de cronjob. De referir que é tudo executado na shell do sistema (terminal).</p>
+<p><a id="more"></a><a id="more-15"></a>Dito assim pode parecer muito confuso mas tentarei elucidar-vos melhor sobre isto com um caso concreto. Imaginem que querem que um script seja executado de meia em meia hora , script esse que irá fazer backup de uma pasta que vocês queiram .Para tal tem-se que "dizer" ao cron que de X em X tempo o script em questão tem que ser executado e o cron pega nessa informação e guarda-a num ficheiro crontab e a partir desse momento , o cron irá verificar de x em x tempo se o script está a ser executado ou não. Senão estiver irá executa-lo , caso esteja já a ser executado o cron não vai fazer nada alem de continuar a "vigiar" essa tarefa para o caso de alguma anomalia a afectar e então o cron volta a executa-la.</p>
+<p>Existem 2 formas de o cron actuar:</p>
+<p>-Global;</p>
+<p>-Local.</p>
+<p> </p>
+<p>No caso da global é o root do sistema que define na crontab o que tem se verificar e fazer. E aplica-se a todos os utilizadores.</p>
+<p>Enquanto que na global o cron apenas irá actuar na conta do utilizador que o criou</p>
+<p>.Para configurar um crontab para um utilizador usa-se a seguinte sintaxe:</p>
+<p> </p>
+<p> </p>
+<pre>-l utilizador -- lista as tarefas agendadas para utilizador<br />
+-e utilizador -- Edita o crontab<br />
+-r utilizador -- apaga o crontab do utilizador<br />
+-c directoria  -- especifica um directoria para o Crontab</pre><br />
+ </p>
+<p> </p>
+<p> </p>
+<p>Para verificar todos os crontabs de um utilizador basta ver esta directoria:<br />
+<code>/var/spool/cron/utilizador</code></p>
+<p>E para editar os crontabs globais basta editar este ficheiro <strong>“/etc/crontab“</strong> .</p>
+<p>Agora que falamos do que é cada coisa vou passar a explicar a sintaxe de um crontab. A sintaxe dos crontabs é divida em 6 partes:</p>
+<p>-<strong>Minuto:</strong>que tem valores entre 0 e 59;<br />
+-<strong>Hora :</strong> que tem valores entre 0 e 23;<br />
+-<strong>Dia :</strong> 1-31<br />
+-<strong>Mês :</strong> 1-12<br />
+-<strong>Dia da Semana :</strong> 0-7/Sun-Sat , o 0 e o 7 representam o domingo;<br />
+-Comando a ser executado.</p>
+<p>Por exemplo se quisermos que um determinado script seja executado todos os dias as 16horas basta fazer isto:</p>
+<p><code>0 16 * * * /home/dev/backup.py</code></p>
+<p>Pode-se complementar isto usando os caracteres especiais que permitem definir mais condições no que é para ser feito:</p>
+<p>-<strong>Asterisco(*):</strong> com este carácter indicamos que serão seleccionados todos os valores do campo em que foi usado , ao seja se usarmos o <strong>* no campo horas significa que o cron vai ser executados em todas as horas.</strong></p>
+<p><strong>-Barra ( / ): </strong>/com este carácter indicamos que o cron será executado consoante o que é definido pela sintax: "/.." , por exemplo se especificar isto no campo horas 59/2 significa que o cron vai ser executado duas vezes por cada hora;</p>
+<p><strong>-Virgula( , )</strong>: com este carácter separamos vários itens da lista como por ex : "1,2,3" neste caso estamos a definir os meses Janeiro , Fevereiro, Março;</p>
+<p><strong>-hífen( - ):</strong> Com este carácter definimos uma range de valores por exemplo: 15-23, neste caso definimos todas as horas entre as 15horas e as 23horas;</p>
+<p>-<strong>Ponto de interrogação(?):</strong>Com este carácter podemos omitir a especificação do dia do mes e do dia da semana. Atenção que só pode ser utilizado num dos campos;</p>
+<p><strong>-L</strong>: o L tem como função identificar que o cron só executado no ultimo valor do campo especificado , no caso dos dias será no valor 7(Domingo);</p>
+<p>-<strong>W:</strong> O W só é utilizado no campo "dia da semana" ao seja se indicarmos o valor "w28" o cron só irá ser executado no dia da semana mais perto do valor do dia do mês. Atenção sabado e domingo não são considerados dias úteis(dias da semana)</p>
+<p><strong>-cardinal(#): </strong>Este carácter só pode ser utilizado no campo dia da semana e tem que ser procedido por um número que vai indicar o dia da semana em que vai ser executado , se tivermos isto : #4 indica que vai executado na segunda quinta-feira de cada mês.</p>
