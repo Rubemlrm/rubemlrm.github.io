@@ -7,4 +7,7 @@ group :jekyll_plugins do
   gem 'jekyll-watch'
   gem 'kramdown'
   gem 'rouge'
+  #gem 'jekyll-admin'
+  gem 'jekyll-import'
+  gem 'forty_jekyll_theme', '~> 1.3'
 end

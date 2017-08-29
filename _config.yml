@@ -1,10 +1,13 @@
 title: Rubem Mota
+subtitle: Developer
+email: rubemmota89@gmail.com
+landing-title: Rubem Mota
 description: Personal Blog
 author: Rubem Mota
 logo: /static/img/avatar.png
 github: https://github.com/rubemlrm
 about: Programador / Administrador de Sistemas
-
+theme: forty_jekyll_theme
 baseurl: ""
 url: ""
 
@@ -13,8 +16,18 @@ allowsearch: true
 disqus_shortname: rubemlrmcom
 google_analytics: 'UA-39203492-1'
 
+# social settings
+500px_url:
+facebook_url:
+github_url: https://github.com/rubemlrm
+gitlab_url: https://gitlab.com/u/rubemlrm
+linkedin_url: https://www.linkedin.com/in/rubemlrm
+pinterest_url:
+slack_url:
+twitter_url: https://twitter.com/rubemlrm
+
 share:
-  twitter_username: rubemlrm
+  twitter_username:
   fb_appid: 000000000000
 
 

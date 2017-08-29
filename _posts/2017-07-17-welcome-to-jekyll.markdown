@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Ora Viva"
+title:  "De volta ao a escrita"
 date:   2017-07-17 22:16:06 +0100
 categories:
 ---

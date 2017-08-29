@@ -13,7 +13,7 @@ categories:
 Com o recente lançamento do Debian como versão final , foi anunciada a versão 8 desta distribuição.
 A versão 8 desta distribuição terá o codename de "Jessie" e será lançado durante 2015. Parassá os reposit&oacute;rios do Debian Jessie ainda estão com os pacotes que estão disponiveis para o Debian Wheezy , sendo que parassá os pacotes disponíveis no repo Security-updates do Jessie ainda não estão a ser mantidas pela equipa oficial do debian.
 
-Feita esta pequena apresentação do Jessie , vou explicar como actualizar o Debian Wheezy para Debian Jessie. 
+Feita esta pequena apresentação do Jessie , vou explicar como actualizar o Debian Wheezy para Debian Jessie.
 
 Como primeiro passo é necessário editar o ficheiro  **/etc/apt/sources.lists** como root e colocar as seguintes entradas no ficheiro:
 
