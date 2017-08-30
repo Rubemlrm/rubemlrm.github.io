@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Rubem Mota</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header -->
+<header id="header">
+	<a href="http://localhost:4000//" class="logo"><strong>Rubem Mota</strong> <span>Developer</span></a>
+	<nav>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+        
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000//">Blog</a></li>
+	    	
+		
+		    
+		
+		    
+		
+		    
+		
+		
+		    
+		        <li><a href="http://localhost:4000/404.html"></a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/about/">Sobre</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/all_posts.html">Artigos</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/feed.xml"></a></li>
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/projects/">Projects</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/static/css/projects.css"></a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/sitemap.xml"></a></li>
+		    
+		
+	</ul>
+	<ul class="actions vertical">
+		<li><a href="#" class="button special fit">Get Started</a></li>
+		<li><a href="#" class="button fit">Log In</a></li>
+	</ul>
+</nav>
+ 
+    
+    
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>Converter Debian Wheezy para Debian Testing</h1>
+		</header>
+		
+		<p><p><img src="http://1.bp.blogspot.com/-R-IkMedx9EE/UYYcktIrKFI/AAAAAAAADJw/0OkXQUJRuMY/s635/debian_logo1.jpg" alt="&quot;debian logo&quot;" /></p>
+
+<p>Com o recente lançamento do Debian como versão final , foi anunciada a versão 8 desta distribuição.
+A versão 8 desta distribuição terá o codename de “Jessie” e será lançado durante 2015. Parassá os repositórios do Debian Jessie ainda estão com os pacotes que estão disponiveis para o Debian Wheezy , sendo que parassá os pacotes disponíveis no repo Security-updates do Jessie ainda não estão a ser mantidas pela equipa oficial do debian.</p>
+
+<p>Feita esta pequena apresentação do Jessie , vou explicar como actualizar o Debian Wheezy para Debian Jessie.</p>
+
+<p>Como primeiro passo é necessário editar o ficheiro  <strong>/etc/apt/sources.lists</strong> como root e colocar as seguintes entradas no ficheiro:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">deb ftp://ftp.uk.debian.org/debian/ jessie main contrib non-free
+deb ftp://ftp.uk.debian.org/debian/ jessie-proposed-updates main contrib non-free
+deb-src ftp://ftp.uk.debian.org/debian/ jessie main contrib non-free
+deb-src ftp://ftp.uk.debian.org/debian/ jessie-proposed-updates main contrib non-free</code></pre></figure>
+
+<p><strong><em>No entanto é necessário verificar que não existe nenhuma entrada referente a versões anteriores.</em></strong>
+Após este passo é necessário atualizar a lista de repositórios , para tal basta executar o seguinte comando:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  sudo apt-get update</code></pre></figure>
+
+<p>Por fim é necessário actualizar o sistema , no entanto como se vai atualizar ;o sistema para uma versão acima , sssá necessário executar o comando:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  sudo apt-get dist-upgrade</code></pre></figure>
+</p>
+	</div>
+</section>
+
+</div>
+
+    <!-- Contact -->
+
+
+<!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                <li><a href="https://twitter.com/rubemlrm" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                
+                
+                <li><a href="https://gitlab.com/u/rubemlrm" class="icon alt fa-gitlab" target="_blank"><span class="label">GitLab</span></a></li>
+                
+                
+                <li><a href="https://github.com/rubemlrm" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                
+                
+                <li><a href="https://www.linkedin.com/in/rubemlrm" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Rubem Mota Developer</li>
+                <li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
+                <li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li>
+
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+    <script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+    <script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+    <script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+    <script src="http://localhost:4000/assets/js/skel.min.js"></script>
+    <script src="http://localhost:4000/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="http://localhost:4000/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="http://localhost:4000/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

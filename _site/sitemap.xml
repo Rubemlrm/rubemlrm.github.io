@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rubem Mota</title>
+    <description>Personal Blog</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 30 Aug 2017 21:36:38 +0100</pubDate>
+    <lastBuildDate>Wed, 30 Aug 2017 21:36:38 +0100</lastBuildDate>
+    <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Migração de SVN para GIT</title>
+        <description>&lt;p&gt;Recentemente foi-me lançado o desafio de migrar um servidor de svn para git , e comecei logo a procura de importações directas,
+sendo que encontrei sugestões tais como o  &lt;a href=&quot;https://github.com/nirvdrum/svn2git/&quot; title=&quot;svn2git&quot;&gt;svn2git&lt;/a&gt; e &lt;a href=&quot;http://subgit.com/,&amp;quot;subit&amp;quot;&quot;&gt;subGit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;No entanto não se adequavam ao que se pretendia fazer, então após mais alguma pesquisa, encontrei várias referências a um comando do git que permitia
+clonar um repositório de SVN para Git e conseguir &lt;strong&gt;manter o histórico&lt;/strong&gt; do mesmo sem configuraçoes extra ou programa externos. O comando em causa é o&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git svn clone http://svn/&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Atráves deste comando é efectuado um pedido ao servidor de svn e será criada uma nova directória para o repositório em causa, sendo que este comando tem a possibilidade de aceitar os parametros que podem ser passados para os &lt;strong&gt;init&lt;/strong&gt; e &lt;strong&gt;fetch&lt;/strong&gt; da utilização de git.
+No entanto de nada nos serve um clone de um
+repositório sem os logs e o mapeamento dos autores dos commits para o sistema que está a ser utilizado. Para tal basta utilizar os seguintes comandos.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;svn log --xml | grep &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;author&amp;gt;&quot;&lt;/span&gt; | sort -u | perl -pe &lt;span class=&quot;s1&quot;&gt;'s/.*&amp;gt;(.*?)&amp;lt;.*/$1 = /'&lt;/span&gt; | tee users.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Este primeiro comando deverá ser executado no servidor de svn actual , com este comando será possivel gerar um ficheiro com as informações relativas a todos
+os autores de commits do svn em causa. Este ficheiro será utilizado como ficheiro de mapeamento de migração de commits e logs para o Git.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git svn clone --stdlayout --no-metadata --authors-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;users.txt svn://hostname/path dest_dir-tmp&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Este segundo comando irá fazer clone do repositório no servidor de SVN e irá criar um repositório de Git local, com a informação de todos os commits e logs deste novo repositório.
+Será necessário ainda especificar o &lt;strong&gt;remote origin&lt;/strong&gt; que iremos utilizar para todas as ações futuras , para tal basta executar os seguintes comandos:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git remote add origin git@server:user/project-name.git
+git push origin --all&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;A partir deste momento será possivel sincronizar o repositório migrado com o servidor de Git.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 20 Jul 2017 22:16:06 +0100</pubDate>
+        <link>http://localhost:4000/git/svn/dicas/2017/07/20/migrate-from-svn-to-git.html</link>
+        <guid isPermaLink="true">http://localhost:4000/git/svn/dicas/2017/07/20/migrate-from-svn-to-git.html</guid>
+        
+        
+        <category>git</category>
+        
+        <category>svn</category>
+        
+        <category>dicas</category>
+        
+      </item>
+    
+      <item>
+        <title>De volta ao a escrita</title>
+        <description>&lt;p&gt;Ora viva,&lt;/p&gt;
+
+&lt;p&gt;Já faz algum tempo que andava afastado deste mundo dos blogs e companhia, e achei
+que estava na hora de voltar a fazer um projecto do género.
+Este projecto vai server como um repositório de experiencias e dicas na área de programaçao e sistemas.&lt;/p&gt;
+
+&lt;p&gt;Mas como todos os primeiros artigos/posts numa comunidade web, irei fazer uma pequena apresentaçao.&lt;/p&gt;
+
+&lt;p&gt;Tenho neste momento 27 anos , e sou programador numa empresa que faz desenvolvimento para &lt;strong&gt;SAP&lt;/strong&gt;.
+Tenho desenvolvido nos ultimos anos em &lt;strong&gt;PHP&lt;/strong&gt; , &lt;strong&gt;Javascript&lt;/strong&gt;, &lt;strong&gt;Mysql/Mongodb&lt;/strong&gt;, &lt;strong&gt;Python/Ruby&lt;/strong&gt;, sendo que este ano
+tenho aprofundado mais os meus conhecimentos em &lt;strong&gt;c#/vb.net&lt;/strong&gt; e &lt;strong&gt;python&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Além da área de programação, tambem tenho experiencia em gestão de servidores Linux,
+mais concretamente com as distribuições Debian/Arch/Fedora.&lt;/p&gt;
+
+&lt;p&gt;No meu tempo livre sou praticante de Karaté e bombeiro voluntário.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Jul 2017 22:16:06 +0100</pubDate>
+        <link>http://localhost:4000/2017/07/17/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/17/welcome-to-jekyll.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Converter Debian Wheezy para Debian Testing</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://1.bp.blogspot.com/-R-IkMedx9EE/UYYcktIrKFI/AAAAAAAADJw/0OkXQUJRuMY/s635/debian_logo1.jpg&quot; alt=&quot;&amp;quot;debian logo&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Com o recente lançamento do Debian como versão final , foi anunciada a versão 8 desta distribuição.
+A versão 8 desta distribuição terá o codename de “Jessie” e será lançado durante 2015. Parassá os repositórios do Debian Jessie ainda estão com os pacotes que estão disponiveis para o Debian Wheezy , sendo que parassá os pacotes disponíveis no repo Security-updates do Jessie ainda não estão a ser mantidas pela equipa oficial do debian.&lt;/p&gt;
+
+&lt;p&gt;Feita esta pequena apresentação do Jessie , vou explicar como actualizar o Debian Wheezy para Debian Jessie.&lt;/p&gt;
+
+&lt;p&gt;Como primeiro passo é necessário editar o ficheiro  &lt;strong&gt;/etc/apt/sources.lists&lt;/strong&gt; como root e colocar as seguintes entradas no ficheiro:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;deb ftp://ftp.uk.debian.org/debian/ jessie main contrib non-free
+deb ftp://ftp.uk.debian.org/debian/ jessie-proposed-updates main contrib non-free
+deb-src ftp://ftp.uk.debian.org/debian/ jessie main contrib non-free
+deb-src ftp://ftp.uk.debian.org/debian/ jessie-proposed-updates main contrib non-free&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;No entanto é necessário verificar que não existe nenhuma entrada referente a versões anteriores.&lt;/em&gt;&lt;/strong&gt;
+Após este passo é necessário atualizar a lista de repositórios , para tal basta executar o seguinte comando:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  sudo apt-get update&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Por fim é necessário actualizar o sistema , no entanto como se vai atualizar ;o sistema para uma versão acima , sssá necessário executar o comando:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  sudo apt-get dist-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Sun, 12 May 2013 17:46:49 +0100</pubDate>
+        <link>http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing.html</link>
+        <guid isPermaLink="true">http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing.html</guid>
+        
+        
+        <category>Tutorial</category>
+        
+        <category>Debian</category>
+        
+      </item>
+    
+      <item>
+        <title>Instalação do yaourt em ArchLinux</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://www.archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png&quot; alt=&quot;&amp;quot;arch logo&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Como utilizador de archlinux já há uns anos , surgiu a necessidade de instalar pacotes que estão disponíveis no AUR . No entanto instalar software que está disponível no AUR pode ser um pouco demoroso e tive necessidade de encontrar uma alternativa viável que me pudesse gerir as instalações a partir do AUR como a partir dos repos oficiais. Como tal encontrei o software yaourt que funciona como gestor de pacotes.Umas das principais mais valias deste gestor de pacotes é que dá para gerir de forma centralizada a instalação dos pacotes tanto de repos AUR como de repos oficias.&lt;/p&gt;
+
+&lt;p&gt;Como tal vou deixar aqui um pequeno tutorial de como instalar este software e algumas dicas de utilização. Inicialmente será necessário editar o ficheiro &lt;strong&gt;/etc/pacman.conf&lt;/strong&gt; e adicionar as seguintes entradas:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;archlinuxfr]
+  SigLevel &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Never
+  Server &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; http://repo.archlinux.fr/&lt;span class=&quot;nv&quot;&gt;$arch&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Após este passo iremos actualizar o sistema e instalar o yaourt ,para tal basta correr o seguinte comando como root:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; sudo pacman -Sy yaourt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;E pronto temos o yaourt instalado =) simples não foi ?
+Agora irei deixar alguns exemplos de utilização do mesmo. Para fazer pesquisa e instalação de um pacote basta executar o comando:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt &amp;lt;pesquisa&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img class=&quot;aligncenter&quot; alt=&quot;&quot; src=&quot;http://archlinux.fr/wp-content/uploads/2007/06/yaourt_2.png&quot; width=&quot;686&quot; height=&quot;169&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Para sincronizar as bases de dados , actualizar e fazer pesquisas no aur basta executar o seguinte comando:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt -Syu --devel --aur&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Caso queira actualizar só o sistema e o aur fazem&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt -Syua&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Para compilar um pacote atravez do código fonte podem utilizar o comando:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt -Sb &amp;lt;pacote&amp;gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Estes são dos comandos mais utilizados , no entanto existe um leque enorme de possiveis comandos que podem ser executados. De referir ainda que devem executar o yaourt sempre como utilizador “normal” visto que durante a instalação dos pacotes será sempre pedida a vossa password , desta forma irão ter mais controlo sobre o que está a ser instalado.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 12 May 2013 17:28:59 +0100</pubDate>
+        <link>http://localhost:4000/archlinux/tutorial/2013/05/12/instalacao-yaourt-em-archlinux.html</link>
+        <guid isPermaLink="true">http://localhost:4000/archlinux/tutorial/2013/05/12/instalacao-yaourt-em-archlinux.html</guid>
+        
+        
+        <category>Archlinux</category>
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+    
+      <item>
+        <title>Weddar</title>
+        <description>Weddar</description>
+        <link>http://localhost:4000https://www.weddar.com/</link>
+        <pubDate>Fri, 01 Apr 2011 00:00:00 +0100</pubDate>
+        
+        <category>Android</category>
+        
+      </item>
+    
+      <item>
+        <title>JfSMamede</title>
+        <description>JfSMamede</description>
+        <link>http://localhost:4000#</link>
+        <pubDate>Sat, 01 Jun 2013 00:00:00 +0100</pubDate>
+        
+        <category>Laravel</category>
+        
+        <category>Mysql</category>
+        
+      </item>
+    
+      <item>
+        <title>Mosel</title>
+        <description>Mosel</description>
+        <link>http://localhost:4000#</link>
+        <pubDate>Sat, 01 Jun 2013 00:00:00 +0100</pubDate>
+        
+        <category>Linux</category>
+        
+        <category>SideProject</category>
+        
+      </item>
+    
+      <item>
+        <title>Hotel Fátima</title>
+        <description>Hotel Fátima</description>
+        <link>http://localhost:4000http://www.hotelfatima.pt/</link>
+        <pubDate>Thu, 01 Jan 1970 00:33:34 +0000</pubDate>
+        
+        <category>yii-framework</category>
+        
+        <category>mysql</category>
+        
+        <category>bootstrap</category>
+        
+      </item>
+    
+      <item>
+        <title>Ferbio</title>
+        <description>Ferbio</description>
+        <link>http://localhost:4000http://www.ferbio.pt/</link>
+        <pubDate>Thu, 01 Jan 1970 00:33:34 +0000</pubDate>
+        
+        <category>Laravel</category>
+        
+        <category>Mysql</category>
+        
+        <category>Api</category>
+        
+      </item>
+    
+      <item>
+        <title>Hotel Dom Gonçalo</title>
+        <description>Hotel Dom Gonçalo</description>
+        <link>http://localhost:4000hoteldg.com</link>
+        <pubDate>Thu, 01 Jan 1970 00:33:33 +0000</pubDate>
+        
+        <category>Laravel</category>
+        
+        <category>Mysql</category>
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Rubem Mota</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header -->
+<header id="header">
+	<a href="http://localhost:4000//" class="logo"><strong>Rubem Mota</strong> <span>Developer</span></a>
+	<nav>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+        
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000//">Blog</a></li>
+	    	
+		
+		    
+		
+		    
+		
+		    
+		
+		
+		    
+		        <li><a href="http://localhost:4000/404.html"></a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/about/">Sobre</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/all_posts.html">Artigos</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/feed.xml"></a></li>
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/projects/">Projects</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/static/css/projects.css"></a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/sitemap.xml"></a></li>
+		    
+		
+	</ul>
+	<ul class="actions vertical">
+		<li><a href="#" class="button special fit">Get Started</a></li>
+		<li><a href="#" class="button fit">Log In</a></li>
+	</ul>
+</nav>
+ 
+    
+    
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>Migração de SVN para GIT</h1>
+		</header>
+		
+		<p><p>Recentemente foi-me lançado o desafio de migrar um servidor de svn para git , e comecei logo a procura de importações directas,
+sendo que encontrei sugestões tais como o  <a href="https://github.com/nirvdrum/svn2git/" title="svn2git">svn2git</a> e <a href="http://subgit.com/,&quot;subit&quot;">subGit</a>.</p>
+
+<p>No entanto não se adequavam ao que se pretendia fazer, então após mais alguma pesquisa, encontrei várias referências a um comando do git que permitia
+clonar um repositório de SVN para Git e conseguir <strong>manter o histórico</strong> do mesmo sem configuraçoes extra ou programa externos. O comando em causa é o</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git svn clone http://svn/</code></pre></figure>
+
+<p>Atráves deste comando é efectuado um pedido ao servidor de svn e será criada uma nova directória para o repositório em causa, sendo que este comando tem a possibilidade de aceitar os parametros que podem ser passados para os <strong>init</strong> e <strong>fetch</strong> da utilização de git.
+No entanto de nada nos serve um clone de um
+repositório sem os logs e o mapeamento dos autores dos commits para o sistema que está a ser utilizado. Para tal basta utilizar os seguintes comandos.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">svn log --xml | grep <span class="s2">"&lt;author&gt;"</span> | sort -u | perl -pe <span class="s1">'s/.*&gt;(.*?)&lt;.*/$1 = /'</span> | tee users.txt</code></pre></figure>
+
+<p>Este primeiro comando deverá ser executado no servidor de svn actual , com este comando será possivel gerar um ficheiro com as informações relativas a todos
+os autores de commits do svn em causa. Este ficheiro será utilizado como ficheiro de mapeamento de migração de commits e logs para o Git.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git svn clone --stdlayout --no-metadata --authors-file<span class="o">=</span>users.txt svn://hostname/path dest_dir-tmp</code></pre></figure>
+
+<p>Este segundo comando irá fazer clone do repositório no servidor de SVN e irá criar um repositório de Git local, com a informação de todos os commits e logs deste novo repositório.
+Será necessário ainda especificar o <strong>remote origin</strong> que iremos utilizar para todas as ações futuras , para tal basta executar os seguintes comandos:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git remote add origin git@server:user/project-name.git
+git push origin --all</code></pre></figure>
+
+<p>A partir deste momento será possivel sincronizar o repositório migrado com o servidor de Git.</p>
+</p>
+	</div>
+</section>
+
+</div>
+
+    <!-- Contact -->
+
+
+<!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                <li><a href="https://twitter.com/rubemlrm" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                
+                
+                <li><a href="https://gitlab.com/u/rubemlrm" class="icon alt fa-gitlab" target="_blank"><span class="label">GitLab</span></a></li>
+                
+                
+                <li><a href="https://github.com/rubemlrm" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                
+                
+                <li><a href="https://www.linkedin.com/in/rubemlrm" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Rubem Mota Developer</li>
+                <li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
+                <li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li>
+
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+    <script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+    <script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+    <script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+    <script src="http://localhost:4000/assets/js/skel.min.js"></script>
+    <script src="http://localhost:4000/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="http://localhost:4000/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="http://localhost:4000/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

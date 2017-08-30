@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Rubem Mota</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header -->
+<header id="header">
+	<a href="http://localhost:4000//" class="logo"><strong>Rubem Mota</strong> <span>Developer</span></a>
+	<nav>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+        
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000//">Blog</a></li>
+	    	
+		
+		    
+		
+		    
+		
+		    
+		
+		
+		    
+		        <li><a href="http://localhost:4000/404.html"></a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/about/">Sobre</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/all_posts.html">Artigos</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/feed.xml"></a></li>
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/projects/">Projects</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/static/css/projects.css"></a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/sitemap.xml"></a></li>
+		    
+		
+	</ul>
+	<ul class="actions vertical">
+		<li><a href="#" class="button special fit">Get Started</a></li>
+		<li><a href="#" class="button fit">Log In</a></li>
+	</ul>
+</nav>
+ 
+    
+    
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>Instalação do yaourt em ArchLinux</h1>
+		</header>
+		
+		<p><p><img src="https://www.archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png" alt="&quot;arch logo&quot;" /></p>
+
+<p>Como utilizador de archlinux já há uns anos , surgiu a necessidade de instalar pacotes que estão disponíveis no AUR . No entanto instalar software que está disponível no AUR pode ser um pouco demoroso e tive necessidade de encontrar uma alternativa viável que me pudesse gerir as instalações a partir do AUR como a partir dos repos oficiais. Como tal encontrei o software yaourt que funciona como gestor de pacotes.Umas das principais mais valias deste gestor de pacotes é que dá para gerir de forma centralizada a instalação dos pacotes tanto de repos AUR como de repos oficias.</p>
+
+<p>Como tal vou deixar aqui um pequeno tutorial de como instalar este software e algumas dicas de utilização. Inicialmente será necessário editar o ficheiro <strong>/etc/pacman.conf</strong> e adicionar as seguintes entradas:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="o">[</span>archlinuxfr]
+  SigLevel <span class="o">=</span> Never
+  Server <span class="o">=</span> http://repo.archlinux.fr/<span class="nv">$arch</span></code></pre></figure>
+
+<p>Após este passo iremos actualizar o sistema e instalar o yaourt ,para tal basta correr o seguinte comando como root:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"> sudo pacman -Sy yaourt</code></pre></figure>
+
+<p>E pronto temos o yaourt instalado =) simples não foi ?
+Agora irei deixar alguns exemplos de utilização do mesmo. Para fazer pesquisa e instalação de um pacote basta executar o comando:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"> yaourt &lt;pesquisa&gt;</code></pre></figure>
+
+<p><img class="aligncenter" alt="" src="http://archlinux.fr/wp-content/uploads/2007/06/yaourt_2.png" width="686" height="169" /></p>
+
+<p>Para sincronizar as bases de dados , actualizar e fazer pesquisas no aur basta executar o seguinte comando:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"> yaourt -Syu --devel --aur</code></pre></figure>
+
+<p>Caso queira actualizar só o sistema e o aur fazem</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"> yaourt -Syua</code></pre></figure>
+
+<p>Para compilar um pacote atravez do código fonte podem utilizar o comando:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"> yaourt -Sb &lt;pacote&gt; </code></pre></figure>
+
+<p>Estes são dos comandos mais utilizados , no entanto existe um leque enorme de possiveis comandos que podem ser executados. De referir ainda que devem executar o yaourt sempre como utilizador “normal” visto que durante a instalação dos pacotes será sempre pedida a vossa password , desta forma irão ter mais controlo sobre o que está a ser instalado.</p>
+</p>
+	</div>
+</section>
+
+</div>
+
+    <!-- Contact -->
+
+
+<!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                <li><a href="https://twitter.com/rubemlrm" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                
+                
+                <li><a href="https://gitlab.com/u/rubemlrm" class="icon alt fa-gitlab" target="_blank"><span class="label">GitLab</span></a></li>
+                
+                
+                <li><a href="https://github.com/rubemlrm" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                
+                
+                <li><a href="https://www.linkedin.com/in/rubemlrm" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Rubem Mota Developer</li>
+                <li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
+                <li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li>
+
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+    <script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+    <script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+    <script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+    <script src="http://localhost:4000/assets/js/skel.min.js"></script>
+    <script src="http://localhost:4000/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="http://localhost:4000/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="http://localhost:4000/assets/js/main.js"></script>
+
+
+</body>
+
+</html>
