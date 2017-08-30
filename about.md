@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Sobre
+nav-menu: true
 permalink: /about/
 ---
 
