@@ -7,7 +7,7 @@ author: Rubem Mota
 logo: /static/img/avatar.png
 github: https://github.com/rubemlrm
 about: Programador / Administrador de Sistemas
-theme: forty_jekyll_theme
+theme: jekyll-theme-hacker
 baseurl: ""
 url: ""
 
