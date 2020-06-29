@@ -33,7 +33,7 @@ Após este passo é necessário atualizar a lista de repositórios , para tal ba
   sudo apt-get update
 {% endhighlight %}
 
-Por fim é necessário actualizar o sistema , no entanto como se vai atualizar ;o sistema para uma versão acima , sssá necessário executar o comando:
+Por fim é necessário actualizar o sistema , no entanto como se vai atualizar o sistema para uma versão acima , será necessário executar o comando:
 
 {% highlight shell %}
   sudo apt-get dist-upgrade

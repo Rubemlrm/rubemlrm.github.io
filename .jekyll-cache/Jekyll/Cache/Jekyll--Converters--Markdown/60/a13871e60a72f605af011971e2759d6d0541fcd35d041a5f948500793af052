@@ -1,0 +1,42 @@
+I"�<p>Aqui fica um pequeno script para encontrar pastas vazias dentro de uma directoria.Este script utiliza o módulo File::Find::Rule para criar a listagem de todas as directorias e sub-directorias, utilizando uma directoria de partida.Este script pode servir de base para a criação de um script para gerir directorias e apagar directorias vazias caso seja necessário.Para tal basta fazer pequenas alterações .<a id="more"></a><a id="more-209"></a></p>
+<p>Para poderem executar este script teram que ter o módulo File::Find::Files instalado , para tal basta executarem o seguinte comando na linha de comandos:</p>
+<p>[bash]</p>
+<p>sudo cpan</p>
+<p>install " File::Find::Rule"</p>
+<p>[/bash]</p>
+<p>Tendo o módulo instalado já poderam executar este script.</p>
+<p>[perl]#!/usr/bin/perl</p>
+<p>use strict;</p>
+<p>use warnings;</p>
+<p>use File::Find::Rule;</p>
+<p>my @sub_dirs;</p>
+<p>&amp;Main();</p>
+<p>sub Main(){<br />
+#leitura da directória por argumento<br />
+chomp(my $path = $ARGV[0]);</p>
+<p>#Listagem de todos os directórios<br />
+my $regra_pesquisa = File::Find::Rule-&gt;new;<br />
+$regra_pesquisa-&gt;directory;<br />
+@sub_dirs = $regra_pesquisa-&gt;in($path);</p>
+<p>&amp;AnalisarDirs();<br />
+}</p>
+<p>sub AnalisarDirs(){<br />
+my @emptydirs;<br />
+my $file2;</p>
+<p>foreach $file2 (@sub_dirs){<br />
+opendir(FILE, "$file2") or die($!);<br />
+readdir FILE;<br />
+readdir FILE;<br />
+if(!(readdir FILE)){<br />
+print "$file2 : directório vazion";<br />
+push(@emptydirs, $file2);<br />
+}<br />
+closedir(FILE) or die "$!";</p>
+<p>}</p>
+<p>########Totalizaçao dos directorios###########<br />
+my $total = @sub_dirs;<br />
+my $vazio = @emptydirs;<br />
+print "Total directórios" . $total .", directórios vazios " . $vazio . "n";</p>
+<p>}</p>
+<p>[/perl]</p>
+:ET

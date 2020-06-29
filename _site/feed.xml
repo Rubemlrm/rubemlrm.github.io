@@ -5,9 +5,9 @@
     <description>Personal Blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Sep 2017 22:37:06 +0100</pubDate>
-    <lastBuildDate>Thu, 14 Sep 2017 22:37:06 +0100</lastBuildDate>
-    <generator>Jekyll v3.5.2</generator>
+    <pubDate>Sat, 20 Jun 2020 13:08:22 +0100</pubDate>
+    <lastBuildDate>Sat, 20 Jun 2020 13:08:22 +0100</lastBuildDate>
+    <generator>Jekyll v4.1.0</generator>
     
       <item>
         <title>Migração de SVN para GIT</title>
@@ -23,18 +23,18 @@ clonar um repositório de SVN para Git e conseguir &lt;strong&gt;manter o histó
 No entanto de nada nos serve um clone de um
 repositório sem os logs e o mapeamento dos autores dos commits para o sistema que está a ser utilizado. Para tal basta utilizar os seguintes comandos.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;svn log --xml | grep &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;author&amp;gt;&quot;&lt;/span&gt; | sort -u | perl -pe &lt;span class=&quot;s1&quot;&gt;'s/.*&amp;gt;(.*?)&amp;lt;.*/$1 = /'&lt;/span&gt; | tee users.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;svn log &lt;span class=&quot;nt&quot;&gt;--xml&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;author&amp;gt;&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; | perl &lt;span class=&quot;nt&quot;&gt;-pe&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/.*&amp;gt;(.*?)&amp;lt;.*/$1 = /'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tee &lt;/span&gt;users.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Este primeiro comando deverá ser executado no servidor de svn actual , com este comando será possivel gerar um ficheiro com as informações relativas a todos
 os autores de commits do svn em causa. Este ficheiro será utilizado como ficheiro de mapeamento de migração de commits e logs para o Git.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git svn clone --stdlayout --no-metadata --authors-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;users.txt svn://hostname/path dest_dir-tmp&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git svn clone &lt;span class=&quot;nt&quot;&gt;--stdlayout&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--no-metadata&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--authors-file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;users.txt svn://hostname/path dest_dir-tmp&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Este segundo comando irá fazer clone do repositório no servidor de SVN e irá criar um repositório de Git local, com a informação de todos os commits e logs deste novo repositório.
 Será necessário ainda especificar o &lt;strong&gt;remote origin&lt;/strong&gt; que iremos utilizar para todas as ações futuras , para tal basta executar os seguintes comandos:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git remote add origin git@server:user/project-name.git
-git push origin --all&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+git push origin &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;A partir deste momento será possivel sincronizar o repositório migrado com o servidor de Git.&lt;/p&gt;
 </description>
@@ -96,11 +96,12 @@ deb-src ftp://ftp.uk.debian.org/debian/ jessie-proposed-updates main contrib non
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;No entanto é necessário verificar que não existe nenhuma entrada referente a versões anteriores.&lt;/em&gt;&lt;/strong&gt;
 Após este passo é necessário atualizar a lista de repositórios , para tal basta executar o seguinte comando:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  sudo apt-get update&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Por fim é necessário actualizar o sistema , no entanto como se vai atualizar ;o sistema para uma versão acima , sssá necessário executar o comando:&lt;/p&gt;
+&lt;p&gt;Por fim é necessário actualizar o sistema , no entanto como se vai atualizar o sistema para uma versão acima , será necessário executar o comando:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  sudo apt-get dist-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get dist-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 </description>
         <pubDate>Sun, 12 May 2013 17:46:49 +0100</pubDate>
         <link>http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing.html</link>
@@ -129,7 +130,7 @@ Após este passo é necessário atualizar a lista de repositórios , para tal ba
 
 &lt;p&gt;Após este passo iremos actualizar o sistema e instalar o yaourt ,para tal basta correr o seguinte comando como root:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; sudo pacman -Sy yaourt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pacman &lt;span class=&quot;nt&quot;&gt;-Sy&lt;/span&gt; yaourt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;E pronto temos o yaourt instalado =) simples não foi ?
 Agora irei deixar alguns exemplos de utilização do mesmo. Para fazer pesquisa e instalação de um pacote basta executar o comando:&lt;/p&gt;
@@ -140,15 +141,15 @@ Agora irei deixar alguns exemplos de utilização do mesmo. Para fazer pesquisa 
 
 &lt;p&gt;Para sincronizar as bases de dados , actualizar e fazer pesquisas no aur basta executar o seguinte comando:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt -Syu --devel --aur&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt &lt;span class=&quot;nt&quot;&gt;-Syu&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--devel&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--aur&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Caso queira actualizar só o sistema e o aur fazem&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt -Syua&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt &lt;span class=&quot;nt&quot;&gt;-Syua&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Para compilar um pacote atravez do código fonte podem utilizar o comando:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt -Sb &amp;lt;pacote&amp;gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt &lt;span class=&quot;nt&quot;&gt;-Sb&lt;/span&gt; &amp;lt;pacote&amp;gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Estes são dos comandos mais utilizados , no entanto existe um leque enorme de possiveis comandos que podem ser executados. De referir ainda que devem executar o yaourt sempre como utilizador “normal” visto que durante a instalação dos pacotes será sempre pedida a vossa password , desta forma irão ter mais controlo sobre o que está a ser instalado.&lt;/p&gt;
 </description>
@@ -164,381 +165,434 @@ Agora irei deixar alguns exemplos de utilização do mesmo. Para fazer pesquisa 
       </item>
     
       <item>
-        <title>Introdução ao Perl</title>
-        <description>&lt;p&gt;Quem já ouviu falar de Perl e quis aprender e depois pensou mas como é que vou aprender isto , ou melhor de que maneira é que vou aprender Perl.E para que serve o Perl. A  pensar nessas questões criei esta rubrica para vos mostrar como fazer algumas coisas. Para que servem algumas funções entre outros aspectos importantes de referir.&lt;/p&gt;
+        <title>[Script]Gerir VirtualHosts do Apache</title>
+        <description>&lt;p&gt;Ora boas tardes,&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://seeklogo.com/images/P/PERL-logo-392C2FBE62-seeklogo.com.gif&quot; alt=&quot;&quot; title=&quot;perl&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Depois de algum tempo sem escrever nada no blog , trago-vos um script em perl acabado de sair do forno que nos permite adicionar , remover , listar , verificar , desativar os nossos virtualhosts.&lt;/p&gt;
 
-&lt;p&gt;Este artigo vai estar divido em 3 partes:&lt;/p&gt;
-
+&lt;p&gt;Para tal temos temos ao nosso dispor as seguintes opções:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Perl o que é ?&lt;/li&gt;
-  &lt;li&gt;O que é necessário para correr perl?&lt;/li&gt;
-  &lt;li&gt;Introdução a conceitos básicos.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-add&lt;/strong&gt; : para adicionar um virtualhost no apache , para tal basta usar a seguinte sintax:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Perl o que é?&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-add&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;A linguagem de programação PERL foi desenvolvida em 1987 por Larry Wall e serviu de base para muitas linguagens modernas de programação , tais como javascript , ruby , etc… O perl é caracterizado por ser uma linguagem de programação amplamente usada por administradores de sistemas , hackers , crackers  e  webdevelopers.Tem os seguintes pontos fortes:&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-add&lt;/span&gt; www.rubemlrm.com rubemlrm &lt;span class=&quot;c&quot;&gt;#example&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Extremamente rápida a trabalhar com strings/arrays/hash’s/regex’s;&lt;/li&gt;
-  &lt;li&gt;Corre em mais de 100 plataformas diferentes;&lt;/li&gt;
-  &lt;li&gt;Pode ser utilizada para webdevelopment , desempenhando papeis geralmente ocupados por php/asp/etc;&lt;/li&gt;
-  &lt;li&gt;Suporte unicode;&lt;/li&gt;
-  &lt;li&gt;Actualmente permite programação orientada a objectos e também procedural ;&lt;/li&gt;
-  &lt;li&gt;Tem uma enorme comunidade de developers que desenvolvem módulos para agilizar o trabalho dos programadores. Para termos acesso a esses módulos basta ir ao site CPAN.&lt;/li&gt;
-  &lt;li&gt;Suporta integração com bases de dados;&lt;/li&gt;
-  &lt;li&gt;No entanto é uma linguagem mais orientada para scripting , ao seja pequenos programas para automatizar tarefas.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-rem&lt;/strong&gt;: para remover um virtualhost no apache, para tal basta usar a seguinte sintax:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;O que é necessário para correr perl?&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-rem&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Para correr o perl nas nossa máquinas é preciso ter o perl instalado , em sistemas *Unix e MacOS o Perl já vem instalado por defeito. Em sistemas Windows basta fazer download da aplicação &lt;a href=&quot;http://strawberryperl.com/&quot; title=&quot;Strawberry Perl&quot;&gt;Strawberry Perl&lt;/a&gt; e instalar e ficarão com o perl instalado no vosso computador.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-rem&lt;/span&gt; www.rubemlrm.com &lt;span class=&quot;c&quot;&gt;#example&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Para programarem em Perl eu recomendo o software &lt;a href=&quot;http://padre.perlide.org/&quot; title=&quot;Padre Perl&quot;&gt;Padre Perl&lt;/a&gt; (corre em sistemas Linux e Windows) ou então utilizem o &lt;a href=&quot;http://www.eclipse.org/&quot; title=&quot;Eclipse&quot;&gt;eclipse&lt;/a&gt; com o plugin &lt;a href=&quot;http://www.epic-ide.org/&quot; title=&quot;EPIC IDE&quot;&gt;Epic IDE&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;-dis&lt;/strong&gt; : para desativar um virtualhost no apache , para tal basta usar a seguinte syntax:&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Introdução aos conceitos básicos&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-dis&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;E finalmente chegamos a parte mais pratica deste artigo. Aqui irei mostrar como criar um programa que imprime uma mensagem para o ecrã e outro que vos irá pedir o nome e imprimir uma mensagem de boas vindas. Então mãos a obra. Depois de abrirem o vosso IDE. Escrevam o seguinte e guardem o ficheiro como helloworld.pl . De referir o .pl refere-se a extensão que os scripts em perl tem. Então depois de copiarem este pequeno script façam executar no vosso IDE para verem o resultado.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; &lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-dis&lt;/span&gt; www.rubemlrm.com &lt;span class=&quot;c&quot;&gt;#example&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/perl&lt;/span&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;-c&lt;/strong&gt; :Esta opção poderá receber um argumento que é o &lt;url&gt; para mostrar a informação do virtualhost , caso não se passe o argumento do url irá mostrar todos os .conf que estão na diretoria /etc/apache2/sites-enabled/. Para tal basta usar a seguinte sintax:&lt;/url&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#irá listar todos os .conf da directoria&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt; 
+ou&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;warnings&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; www.rubemlrm.com &lt;span class=&quot;c&quot;&gt;#para mostrar o conteudo do .conf deste url&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;-h&lt;/strong&gt; : Por fim temos esta opção para nos mostrar os comandos que temos disponíveis.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;./apache &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;De seguida fica o código do script:
+true&lt;script src=&quot;https://gist.github.com/rubemlrm/3387796.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 18 Aug 2012 16:07:32 +0100</pubDate>
+        <link>http://localhost:4000/2012/08/18/scriptgerir-virtualhosts-no-apache.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2012/08/18/scriptgerir-virtualhosts-no-apache.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Verificar m&amp;aacute;quinas de rede</title>
+        <description>&lt;p&gt;Boas noites, depois de algum tempo sem postar aqui nada devido a escola .Deixo aqui um pequeno script em perl que permite testar as máquinas de rede para ver quais é que estão ativas na nossa rede informática. Para tal é preciso ter um ficheiro com os ips que queremos testar e o script trata do resto sozinho.&lt;/p&gt;
+
+&lt;div class=&quot;language-perl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/perl&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;warnings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Net::&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Ping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;autodie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$my_addr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;ip&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;@reportlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;chomp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;date +%a%d%m%y%k%M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`);&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bem vindos ao Perl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;ficheiro com ips&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;chomp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;@ips&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@ips&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$ping&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Net::&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Ping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;#print &quot;$host -&amp;gt; está activo.n&quot;;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@reportlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; -&amp;gt; está activo.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;#print &quot;$host -&amp;gt; está offlinen&quot;;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@reportlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; -&amp;gt; está offline.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$ping&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#Reporte da lista&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@reportlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$_n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;p&gt;Agora começam a pensar mas então o que e que e cada coisa que está ali .Para mim parece chinês use isto , print aquilo .Bem é bastante fácil de entender  e irei explicar passo a passo cada coisa para que vocês fiquem a perceber tudo.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/perl&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Esta linha é bastante importante , é logo a primeira linha a ser escrita e não pode ter espaços nem ficar na segunda linha do script porque senão irá dar erro. Quando um interpretador executa um ficheiro perl , ele tem que saber que o ficheiro em questão é um ficheiro perl e que tipo de interpretador e que tem usar e nesta linha nós indicamos isso.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;warnings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Nesta situação usamos 2 pragmas , um pragma é uma extensão ao programa. Ao seja vamos incluir funções que não vem por defeito num script. Para tal temos que usar a função &lt;strong&gt;use&lt;/strong&gt; seguida do nome do pragma. Neste caso usei o pragma warnings e strict. O pragma warnings é responsável por nos avisar de possíveis erros de sintaxe ou mesmo de programação. Enquanto que o pragma Strict permite uma melhor organização e estrutura a nível de sintaxe , declaração de variáveis , procedimentos , etc.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bem vindos ao Perl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Por fim a função &lt;strong&gt;print&lt;/strong&gt; , esta função irá imprimir para o ecrã aquilo que declaramos.&lt;/p&gt;
-
-&lt;p&gt;Agora iremos criar um pequeno programar que irá pedir o nome de utilizador e imprimir uma mensagem de boas vindas no ecrã.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/perl&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;warnings&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Introduza o seu nomen&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;&amp;lt;stdin&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;&amp;lt;/stdin&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;chomp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bem vindos ao Perl $nome&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Neste script introduzi 5 funções novas:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;my&lt;/strong&gt;: Esta função é usada para declarar qualquer tipo de variáveis. Mas a sua utilização só e obrigatória se tivermos usado o pragma strict. Caso não tenhamos usado só é obrigatório utilizar dentro de funções(mas isso fica para outro tutorial ;) );&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;$nome:&lt;/strong&gt; é a nossa variável , para se declarar uma variável usa-se o simbolo &lt;strong&gt;$&lt;/strong&gt; ;&lt;/li&gt;
-  &lt;li&gt;: Esta função é utilizada para ler o que é introduzido pelo teclado.Ao estarmos a igual a variavel $nome a esta função , estamos a dizer que a variável nome ira ter o valor do &lt;stdin&gt;;&lt;/stdin&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;n&lt;/strong&gt; : usando esta expressão num &lt;strong&gt;print&lt;/strong&gt; iremos dizer ao programa que depois de imprimir o conteúdo do print deverá criar um nova linha(carregar no enter) ;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;chomp&lt;/strong&gt; : esta função é das mais importantes que se podem utilizar , visto que elimina os n de todos os valores da variável que queremos.&lt;/li&gt;
-  &lt;li&gt;Por fim no print chama-mos a variável $nome e ira imprimir o seu valor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Já agora fica uma pequena dica ;)&lt;/p&gt;
-
-&lt;p&gt;Em vez de fazerem isto :&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;&amp;lt;stdin&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;&amp;lt;/stdin&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;chomp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Podem fazer logo isto :&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;chomp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;&amp;lt;stdin&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;&amp;lt;/stdin&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;Que alem de deixar o código mais organizado , agiliza a escrita de código.&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;#para um ficheiro a ser enviado por mail&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;gt;../logs/'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$date_machine_networking_report&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@reportlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$_n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
-        <pubDate>Fri, 30 Dec 2011 17:14:24 +0000</pubDate>
-        <link>http://localhost:4000/development/perl/tutorial/2011/12/30/perlintroducao-ao-perl.html</link>
-        <guid isPermaLink="true">http://localhost:4000/development/perl/tutorial/2011/12/30/perlintroducao-ao-perl.html</guid>
+        <pubDate>Fri, 16 Mar 2012 21:06:07 +0000</pubDate>
+        <link>http://localhost:4000/2012/03/16/verificar-maquinas-de-rede.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2012/03/16/verificar-maquinas-de-rede.html</guid>
         
-        
-        <category>development</category>
-        
-        <category>perl</category>
-        
-        <category>tutorial</category>
         
       </item>
     
       <item>
-        <title>Auto-Join Script para Mirc</title>
-        <description>&lt;p&gt;Este é um exemplo para criar um script para fazer auto join no irc.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;on &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:START:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    .server chat.eu.freenode.net -i
-    .server -m irc.network -i &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;esta é a sintaxe que você tem que usar para utilizar este script para outras redes.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-on &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:NOTICE:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;This nickname is registered and protected&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; freenode &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        .msg nickserv IDENTIFY &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    elseif &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        .msg nickserv IDENTIFY &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-on &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:NOTICE:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;Password accepted&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; freenode&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        join
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    elseif &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        join
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Agora irei explicar este script:&lt;/p&gt;
-
-&lt;p&gt;1ª Parte :&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;on &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:START:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    .server freenode -i
-    .server -m irc.network -i &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;esta é a sintaxe que você tem que usar para utilizar este script para outras redes.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Nesta parte definimos a que redes é que queremos que o script se ligue. Mas atenção a 2 factores importantes:
--Não esquecer the usar o argumento “-m” no caso de utilizarmos o script para nos ligarmos a várias redes.&lt;/p&gt;
-
-&lt;p&gt;2ª Parte:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;on &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:NOTICE:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;This nickname is registered and protected&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; Freenode &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        .msg nickserv IDENTIFY &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    elseif &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        .msg nickserv IDENTIFY &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Neste parte realizamos a identificação do nick .E caso queiram ter várias sessões na mesma rede podem usar um “else if”.&lt;/p&gt;
-
-&lt;p&gt;3ª Parte:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;on &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:NOTICE:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;Password accepted&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; freenode&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        join
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; elseif &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; NickServ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$network&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        join
-   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Por fim depois de ter identificado o nick , irá entrar nos canais que definiu.&lt;/p&gt;
+        <title>Verificar se utilizador existe</title>
+        <description>&lt;p&gt;Boas noites&lt;/p&gt;
+&lt;p&gt;Desta vez venho apresentar mais um pequeno script feito por mim.Este script tem como fundamento verificar se um utilizador existe ou não no sistema Linux e se existir alem de nos mostrar uma mensagem a dizer que existe ainda vai identificar o UID desse utilizador.Caso contrário vai mostrar uma mensagem de erro a dizer que o utilizador não existe.Atenção não foram utilizados comandos bash por isso é tudo perl scripting.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-398&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[perl]&lt;/p&gt;
+&lt;p&gt;#!/usr/bin/perl&lt;br /&gt;
+use warnings;&lt;br /&gt;
+use strict;&lt;br /&gt;
+my @finalusers;&lt;br /&gt;
+my $utilizador;&lt;br /&gt;
+my $statuscode = 0;&lt;br /&gt;
+my $uid;&lt;/p&gt;
+&lt;p&gt;#Analise se foi intruzido um nome ou não&lt;br /&gt;
+if(@ARGV != 1){die &quot;Argumento inválido&quot;;}&lt;br /&gt;
+chomp($utilizador = $ARGV[0]);&lt;/p&gt;
+&lt;p&gt;open(FILE, &quot;/etc/passwd&quot;) || die($!);&lt;br /&gt;
+chomp(my @utilizadores = &lt;FILE&gt;);&lt;br /&gt;
+close(FILE);&lt;br /&gt;
+foreach my $date (@utilizadores){&lt;br /&gt;
+chomp $date;&lt;br /&gt;
+my @finalusers = split /:/, $date;&lt;br /&gt;
+chomp(@finalusers);&lt;br /&gt;
+if($finalusers[0] eq $utilizador){&lt;br /&gt;
+$uid = $finalusers[2];&lt;br /&gt;
+$statuscode++;&lt;br /&gt;
+}&lt;br /&gt;
+}&amp;lt;/p&amp;gt;
+&lt;p&gt;if( $statuscode != 1){&lt;br /&gt;
+print &quot;O $utilizador NÃO se encontra criado no sisteman&quot;;&lt;br /&gt;
+}else{&lt;/p&gt;
+&lt;p&gt;print &quot;o $utilizador JÁ se encontra criado no sistema! O seu UID é $uid !n&quot; ;&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;[/perl]&lt;/p&gt;
+&lt;/FILE&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 14 Sep 2011 21:24:35 +0100</pubDate>
-        <link>http://localhost:4000/irc/dicas/2011/09/14/mircauto-join-script.html</link>
-        <guid isPermaLink="true">http://localhost:4000/irc/dicas/2011/09/14/mircauto-join-script.html</guid>
+        <pubDate>Thu, 23 Feb 2012 00:18:54 +0000</pubDate>
+        <link>http://localhost:4000/2012/02/23/scriptverificar-se-utilizador-existe.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2012/02/23/scriptverificar-se-utilizador-existe.html</guid>
         
-        
-        <category>irc</category>
-        
-        <category>dicas</category>
         
       </item>
     
       <item>
-        <title>Cron e crontab o que são ? E para que servem?</title>
-        <description>&lt;p&gt;Certamente muitos de vós já se depararam com estes 2 termos e questionaram-se sobre o que seriam e que função desempenhavam .Ambos são processos que são exclusivos de sistemas UNIX ou seja linux e openbsd entre outros.&lt;/p&gt;
-
-&lt;p&gt;O crontab serve de  arquivo para as tarefas que queremos que sejam automatizadas como por exemplo: fazer backups , apagar ficheiros , corrigir erros do sistema , actualizar o sistema, entre outras coisas. Enquanto que o Cron vai utilizar esse arquivo e vai verificar de x em x tempo se a tarefa já foi executada ou ainda está a ser executada e verifica também a quanto tempo foi executada. Caso ainda não tenha sido executada o cron irá executar essa tarefa de forma autónoma e irá ter o nome de cronjob. De referir que é tudo executado na shell do sistema (terminal).&lt;/p&gt;
-
-&lt;p&gt;Dito assim pode parecer muito confuso mas tentarei elucidar-vos melhor sobre isto com um caso concreto. Imaginem que querem que um script seja executado de meia em meia hora , script esse que irá fazer backup de uma pasta que vocês queiram .Para tal tem-se que “dizer” ao cron que de X em X tempo o script em questão tem que ser executado e o cron pega nessa informação e guarda-a num ficheiro crontab e a partir desse momento , o cron irá verificar de x em x tempo se o script está a ser executado ou não. Senão estiver irá executa-lo , caso esteja já a ser executado o cron não vai fazer nada alem de continuar a “vigiar” essa tarefa para o caso de alguma anomalia a afectar e então o cron volta a executa-la.&lt;/p&gt;
-
-&lt;p&gt;Existem 2 formas de o cron actuar:&lt;/p&gt;
-
-&lt;p&gt;-Global;&lt;/p&gt;
-
-&lt;p&gt;-Local.&lt;/p&gt;
-
-&lt;p&gt;No caso da global é o root do sistema que define na crontab o que tem se verificar e fazer. E aplica-se a todos os utilizadores.&lt;/p&gt;
-
-&lt;p&gt;Enquanto que na global o cron apenas irá actuar na conta do utilizador que o criou.&lt;/p&gt;
-
-&lt;p&gt;Para configurar um crontab para um utilizador usa-se a seguinte sintaxe:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;-l utilizador – lista as tarefas agendadas para utilizador&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-  &lt;li&gt;-e utilizador – Edita o crontab&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-  &lt;li&gt;-r utilizador – apaga o crontab do utilizador&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-  &lt;li&gt;-c directoria  – especifica um directoria para o Crontab&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para verificar todos os crontabs de um utilizador basta ver esta directoria:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/var/spool/cron/utilizador&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;E para editar os crontabs globais basta editar este ficheiro &lt;strong&gt;“/etc/crontab“&lt;/strong&gt; .&lt;/p&gt;
-
-&lt;p&gt;Agora que falamos do que é cada coisa vou passar a explicar a sintaxe de um crontab. A sintaxe dos crontabs é divida em 6 partes:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Minuto:&lt;/strong&gt;que tem valores entre 0 e 59;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Hora :&lt;/strong&gt; que tem valores entre 0 e 23;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Dia :&lt;/strong&gt; 1-31&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Mês :&lt;/strong&gt; 1-12&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Dia da Semana :&lt;/strong&gt; 0-7/Sun-Sat , o 0 e o 7 representam o domingo;&lt;/li&gt;
-  &lt;li&gt;Comando a ser executado.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Por exemplo se quisermos que um determinado script seja executado todos os dias as 16horas basta fazer isto:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0 16 * * * /home/dev/backup.py&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Pode-se complementar isto usando os caracteres especiais que permitem definir mais condições no que é para ser feito:&lt;/p&gt;
-
-&lt;p&gt;-&lt;strong&gt;Asterisco(*):&lt;/strong&gt; com este carácter indicamos que serão seleccionados todos os valores do campo em que foi usado , ao seja se usarmos o ** no campo horas significa que o cron vai ser executados em todas as horas.**&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;-Barra ( / ):&lt;/strong&gt; com este carácter indicamos que o cron será executado consoante o que é definido pela sintax: “/..” , por exemplo se especificar isto no campo horas 59/2 significa que o cron vai ser executado duas vezes por cada hora;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;-Virgula( , )&lt;/strong&gt;: com este carácter separamos vários itens da lista como por ex : “1,2,3” neste caso estamos a definir os meses Janeiro , Fevereiro, Março;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;-hífen( - ):&lt;/strong&gt; Com este carácter definimos uma range de valores por exemplo: 15-23, neste caso definimos todas as horas entre as 15horas e as 23horas;&lt;/p&gt;
-
-&lt;p&gt;-&lt;strong&gt;Ponto de interrogação(?):&lt;/strong&gt;Com este carácter podemos omitir a especificação do dia do mes e do dia da semana. Atenção que só pode ser utilizado num dos campos;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;-L&lt;/strong&gt;: o L tem como função identificar que o cron só executado no ultimo valor do campo especificado , no caso dos dias será no valor 7(Domingo);&lt;/p&gt;
-
-&lt;p&gt;-&lt;strong&gt;W:&lt;/strong&gt; O W só é utilizado no campo “dia da semana” ao seja se indicarmos o valor “w28” o cron só irá ser executado no dia da semana mais perto do valor do dia do mês. Atenção sabado e domingo não são considerados dias úteis(dias da semana)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;-cardinal(#): &lt;/strong&gt;Este carácter só pode ser utilizado no campo dia da semana e tem que ser procedido por um número que vai indicar o dia da semana em que vai ser executado , se tivermos isto : #4 indica que vai executado na segunda quinta-feira de cada mês.&lt;/p&gt;
+        <title>Sysadmin-toolbox</title>
+        <description>&lt;p&gt;Depois de algum tempo a programar em perl , decidi &quot;que tal por as minhas capacidades a prova&quot; e construi um painel administrativo em perl para gerir sistemas.&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-214&quot;&gt;&lt;/a&gt;E depois de algumas horas a programar , tenho uma versão 1 pronta a utilizar ainda com poucas funcionalidades é certo , mas para já considero que tem as funcionalidades básicas já implementadas , tais como:&lt;/p&gt;
+&lt;p&gt;-Adicionar/remover utilizadores;&lt;/p&gt;
+&lt;p&gt;-Possibilidade de fazer backups dos dados de um utilizador que se vai apagar;&lt;/p&gt;
+&lt;p&gt;-Gestão de crons;&lt;/p&gt;
+&lt;p&gt;-Funcionalidade para testar os pcs da rede.De forma a ver quais estão online e quais não estão;&lt;/p&gt;
+&lt;p&gt;-Funcionalidade para encontrar pastas vazias e ficar com um registo das mesmas;&lt;/p&gt;
+&lt;p&gt;-Funcionalidade para ver quais são os processos que estão a gastar mais recursos&lt;/p&gt;
+&lt;p&gt;-Funcionalidade para adicionar vários utilizadores a uma máquina de forma automática&lt;/p&gt;
+&lt;p&gt;-Funcionalidade para encontrar ficheiros que tenham um tamanho superior ao indicado.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Este projecto está disponível no github a partir do seguinte link : &lt;a href=&quot;https://github.com/Rubemlrm/sysadmin-toolbox&quot;&gt;https://github.com/Rubemlrm/sysadmin-toolbox&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Para utilizar basta fazer download do projecto e configurar o ficheiro includes.pl que está na pasta includes , com o caminho correcto para o script.Espero que reportem possiveis bugs e sugestões =).&lt;/p&gt;
 </description>
-        <pubDate>Wed, 14 Sep 2011 20:57:11 +0100</pubDate>
-        <link>http://localhost:4000/linux/2011/09/14/cron-e-crontab-o-que-sao-e-para-que-servem.html</link>
-        <guid isPermaLink="true">http://localhost:4000/linux/2011/09/14/cron-e-crontab-o-que-sao-e-para-que-servem.html</guid>
+        <pubDate>Thu, 16 Feb 2012 15:25:13 +0000</pubDate>
+        <link>http://localhost:4000/2012/02/16/perllinuxsysadmin-toolbox.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2012/02/16/perllinuxsysadmin-toolbox.html</guid>
         
-        
-        <category>linux</category>
         
       </item>
     
       <item>
-        <title>Hello World em Python</title>
-        <description>&lt;p&gt;Muitos de vós já ouviram falar de python e tiveram curiosidade em saber como programar em python. E com este artigo vou explicar algumas coisas de python mas apenas coisas básicas.&lt;/p&gt;
-
-&lt;p&gt;E como tal vou utilizar o tão conhecido “Hello World” que é o programa da praxe em todas as linguagens de programação.&lt;/p&gt;
-
-&lt;p&gt;Antes de começar-mos a programar em python temos que instalar o software necessário.Para isso basta ir ao site da &lt;a href=&quot;http://www.python.org/download/&quot;&gt;Python&lt;/a&gt;  e fazerem download da aplicação para os vossos sistemas operativos.Caso utilizem Linux/Unix já devem trazer instalado o python para tal basta abrir o terminal e escrever “python” se der erro é porque não está instalado e terão que seguir as informações de instalação para o vosso sistema.&lt;/p&gt;
-
-&lt;p&gt;De referir que podem criar programas em python em programas como o notepadd ++ mas não o poderão executar senão tiverem o python instalado no pc.&lt;/p&gt;
-
-&lt;p&gt;Agora vamos passar para a programação propriamente dita.
-Imaginem que querem que o programa imprima alguma coisa no ecrã quando é executado , para tal basta escreverem isto no ficheiro do vosso programa:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bom dia pessoal&quot;&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;No exemplo acima demonstrado temos 2 coisas que é importante referir:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;print&lt;/strong&gt; -&amp;gt; com este comando vamos imprimir variáveis/frases para o ecrã ;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;“Bom dia pessoal”&lt;/strong&gt; -&amp;gt; A string que vai ser impressa , atenção que têm que estar entre &lt;strong&gt;” “&lt;/strong&gt;;&lt;/p&gt;
-
-&lt;p&gt;Até aqui não há grandes dúvidas da simplicidade do python , mas agora vamos dinamizar um bocado o nosso código de forma a que passe a ler aquilo que o utilizador introduz. Para tal temos que utilizar a seguinte sintax:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;nome&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;raw_input&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Qual é o seu nome?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Neste exemplo estamos a declarar que a variavel que neste caso é o &lt;strong&gt;“nome”&lt;/strong&gt; vai ter o valor que for adquirido com o &lt;strong&gt;“raw_input”&lt;/strong&gt;.
-O &lt;strong&gt;“raw_input”&lt;/strong&gt; irá ler e guardar a informação que o utilizador escreveu quando respondeu ao que se perguntava/pedia na &lt;strong&gt;”(“Qual é o seu nome?”)”.&lt;/strong&gt;
-Atenção que o nome da variável que ira ser utilizada na ultima parte tem que ser igual a variavel que iniciamos , ao seja se dissermos que a variável &lt;strong&gt;x&lt;/strong&gt; é igual ao raw input da pergunta y , essa pergunta tem que ter um campo &lt;strong&gt;x&lt;/strong&gt; porque senão o que introduzirmos não vai ser associado.&lt;/p&gt;
-
-&lt;p&gt;Agora iremos pegar nos dois exemplos acima demonstrados e vamos criar um pequeno script que vai perguntar o nome e posteriormente irá imprimir uma frase com o nome que foi introduzido.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;nome&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;raw_input&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Qual é o seu nome? : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Ola &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nome&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; é um prazer conhece-lo.&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Ao verem este exemplo poderão estranhar o que fazem ali os “+” bem o “+” é um símbolo de concatnação que une várias strings para formar uma “compound string”.De referir ainda que em nenhum dos exemplos definimos o tipo de variável que iríamos utilizar.&lt;/p&gt;
+        <title>Reportar Directorias Vazias</title>
+        <description>&lt;p&gt;Aqui fica um pequeno script para encontrar pastas vazias dentro de uma directoria.Este script utiliza o módulo File::Find::Rule para criar a listagem de todas as directorias e sub-directorias, utilizando uma directoria de partida.Este script pode servir de base para a criação de um script para gerir directorias e apagar directorias vazias caso seja necessário.Para tal basta fazer pequenas alterações .&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-209&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Para poderem executar este script teram que ter o módulo File::Find::Files instalado , para tal basta executarem o seguinte comando na linha de comandos:&lt;/p&gt;
+&lt;p&gt;[bash]&lt;/p&gt;
+&lt;p&gt;sudo cpan&lt;/p&gt;
+&lt;p&gt;install &quot; File::Find::Rule&quot;&lt;/p&gt;
+&lt;p&gt;[/bash]&lt;/p&gt;
+&lt;p&gt;Tendo o módulo instalado já poderam executar este script.&lt;/p&gt;
+&lt;p&gt;[perl]#!/usr/bin/perl&lt;/p&gt;
+&lt;p&gt;use strict;&lt;/p&gt;
+&lt;p&gt;use warnings;&lt;/p&gt;
+&lt;p&gt;use File::Find::Rule;&lt;/p&gt;
+&lt;p&gt;my @sub_dirs;&lt;/p&gt;
+&lt;p&gt;&amp;amp;Main();&lt;/p&gt;
+&lt;p&gt;sub Main(){&lt;br /&gt;
+#leitura da directória por argumento&lt;br /&gt;
+chomp(my $path = $ARGV[0]);&lt;/p&gt;
+&lt;p&gt;#Listagem de todos os directórios&lt;br /&gt;
+my $regra_pesquisa = File::Find::Rule-&amp;gt;new;&lt;br /&gt;
+$regra_pesquisa-&amp;gt;directory;&lt;br /&gt;
+@sub_dirs = $regra_pesquisa-&amp;gt;in($path);&lt;/p&gt;
+&lt;p&gt;&amp;amp;AnalisarDirs();&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub AnalisarDirs(){&lt;br /&gt;
+my @emptydirs;&lt;br /&gt;
+my $file2;&lt;/p&gt;
+&lt;p&gt;foreach $file2 (@sub_dirs){&lt;br /&gt;
+opendir(FILE, &quot;$file2&quot;) or die($!);&lt;br /&gt;
+readdir FILE;&lt;br /&gt;
+readdir FILE;&lt;br /&gt;
+if(!(readdir FILE)){&lt;br /&gt;
+print &quot;$file2 : directório vazion&quot;;&lt;br /&gt;
+push(@emptydirs, $file2);&lt;br /&gt;
+}&lt;br /&gt;
+closedir(FILE) or die &quot;$!&quot;;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;########Totalizaçao dos directorios###########&lt;br /&gt;
+my $total = @sub_dirs;&lt;br /&gt;
+my $vazio = @emptydirs;&lt;br /&gt;
+print &quot;Total directórios&quot; . $total .&quot;, directórios vazios &quot; . $vazio . &quot;n&quot;;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;[/perl]&lt;/p&gt;
 </description>
-        <pubDate>Wed, 14 Sep 2011 20:56:39 +0100</pubDate>
-        <link>http://localhost:4000/python/development/dicas/2011/09/14/pythonhello-world.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/development/dicas/2011/09/14/pythonhello-world.html</guid>
+        <pubDate>Wed, 15 Feb 2012 18:22:09 +0000</pubDate>
+        <link>http://localhost:4000/2012/02/15/perlreportar-directorias-vazias.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2012/02/15/perlreportar-directorias-vazias.html</guid>
         
-        
-        <category>python</category>
-        
-        <category>development</category>
-        
-        <category>dicas</category>
         
       </item>
     
       <item>
-        <title>Palestra sobre desenvolvimento em android na ESTG</title>
-        <description>&lt;p&gt;Praticamente uma semana depois da realização desta palestra , finalmente tive tempo para fazer um pequeno resumo do que se passou e de como correu.&lt;/p&gt;
-
-&lt;p&gt;Apesar de um breve atraso no inicio da palestra devido a problemas técnicos iniciou-se o inicio da palestra comigo a falar sobre versões de android e suas inovações e dicas sobre como trabalhar como o GIT. No meu ver a minha parte até correu bem.
-As partes que gostei mais na palestra foram a palestra sobre OpenGL e sobre Rom development onde deu para aprender muita coisa que nunca se vai aprender na escola e que me fez despertar um interesse em rom development e ainda me levou a querer aprender ainda mais de programação.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Game Dev:&lt;/strong&gt;
-Coisas como motores gráficos e NDK fizeram-me ver que aquilo que eu tinha feito para a PAT em rpg maker VX não foi nada por ai alem e que ainda tenho muito que aprender sobre a área de game dev. Com esta palestra vi que nem sempre a ideia mais complicada é a melhor e que se podem criar jogos muito interessantes sem recorrer a grande histórias de jogo.
-Uma coisa que achei muito interessante foi o que é preciso para desenvolver um motor de jogo , desde as leis da física , a optimização de código e previsões de embate do objecto que criamos no jogo.
-A criação de um jogo a nível visual é muito fácil bastando para isso criar 3 variaveis:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Mundo:&lt;/li&gt;
-  &lt;li&gt;Objecto que controlamos;&lt;/li&gt;
-  &lt;li&gt;Zonas de impacto&lt;/li&gt;
-  &lt;li&gt;Fundo para dar .&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Posteriormente a esta etapa tem que se definir em que é que o jogo vai consistir ao seja o guião do jogo .E aqui definimos o que é que para se fazer no jogo , desde quests , noiveis , personagens , etc.&lt;/p&gt;
-
-&lt;p&gt;Por fim a parte mais desafiante juntar isto tudo e criar um jogo com tudo o que planeamos.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Rom dev:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Este foi sem sombra de dúvidas o tema que me interessou mais. Já a algum tempo que gostava de aprender como criar uma ROM e sempre pensei que fosse impossível para quem não percebesse muito de C ou outras .Mas acabei por ver que não é assim tão difícil e que já existem muitas ferramentas que ajudam neste trabalho .No entanto é preciso conhecer termos como boot.img , root , init.rc , kernel etc e saber o que cada um faz. Uma das formas mais básicas de criar uma custom ROM é pegar numa já existente e fazer pequenas alterações , como adicionar e remover apk’s que estejam na pasta /system , criar um theme só nosso , alterar velocidades de clock do CPU , splash screens etc.E depois compilar tudo para criar uma ROM.
-E vocês pensam agora mas é assim tão simples quanto isso ??Bem na teoria sim mas na prática é preciso ter alguns cuidados como não alterar definições importantes do sistema porque poderam ficar com o dispositivo inóperavel.
-A outra maneira que existe para se criar uma rom é from the source ao seja adquirimos o source do android e começamos a construir a nossa rom totalmente da nossa autoria, mas nesta situação já é necessário conhecimentos de programação mais avançados , visto que se mexe com kernel dev , drivers dev entre outras coisas, e a quantidade de bugs que vão existir logo de inicio. Mas o importante é não desanimar .&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Theme Dev&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Possivelmente o tema mais acessivel que falou nesta palestra visto que se torna muito fácil alterar themes , alias nunca pensei que fosse tão fácil. Foi interessante ver as ferramentas que se utilizam.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;APN Portugal&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Foi feita uma pequena demonstração do funcionamento da mesma a nível de utilizador final e de aspectos importante relativamente a como identificar a que rede se pertence.&lt;/p&gt;
+        <title>Gerir Cron's com o Perl</title>
+        <description>&lt;p&gt;Bem pessoal aqui fica um pequeno script para vos ajudar a a automatizar as vossas tarefas quando tiverem que mexer em crontabs.Este script surgiu numa aula de Sistemas Operativos em que tínhamos um exercício em que tínhamos que adicionar novos crons com o script. Mas para não limitar o script acrescentei mais umas funções.Tais como tornar a criação de um novo cron mais interactiva , apagar crons , gravar o cron na localização correcta consoante o utilizador que está a executar o script.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-159&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[perl]&lt;br /&gt;
+#!/usr/bin/perl&lt;br /&gt;
+#Developed by : Rubem Mota&lt;br /&gt;
+#Dont use to earn money and keep all copyrights reserved to me&lt;br /&gt;
+#Twitter: @rubemlrm&lt;br /&gt;
+package SysAdmin;&lt;br /&gt;
+use warnings;&lt;br /&gt;
+use strict;&lt;br /&gt;
+use autodie;&lt;/p&gt;
+&lt;p&gt;#declaração de variáveis&lt;br /&gt;
+my $min ;&lt;br /&gt;
+my $horas ;&lt;br /&gt;
+my $dia;&lt;br /&gt;
+my $mes;&lt;br /&gt;
+my $diasemana;&lt;br /&gt;
+my $uid = `id -u`;&lt;br /&gt;
+my $opt;&lt;br /&gt;
+my $comando;&lt;br /&gt;
+my $user;&lt;br /&gt;
+my $val;&lt;/p&gt;
+&lt;p&gt;#funções a ser chamadas&lt;br /&gt;
+&amp;amp;Main();&lt;/p&gt;
+&lt;p&gt;#funções&lt;/p&gt;
+&lt;p&gt;sub Main(){&lt;br /&gt;
+print &quot;Bem vindo a área de gestõa crontabn&quot;;&lt;br /&gt;
+print &quot;Se deseja eliminar um cron pressione tecla Dn&quot;;&lt;br /&gt;
+print &quot;se deseja adicionar um cron pressiona a tecla An&quot;;&lt;br /&gt;
+chomp($opt = );&lt;br /&gt;
+if ( $opt eq &quot;D&quot;){&lt;br /&gt;
+&amp;amp;Eliminar();&lt;br /&gt;
+}elsif($opt eq &quot;A&quot;){&lt;br /&gt;
+&amp;amp;Adicionar();&lt;br /&gt;
+}else{&lt;br /&gt;
+print &quot;Opção inválida&quot;;&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;sub Eliminar{&lt;br /&gt;
+if ($uid != 0){&lt;br /&gt;
+&amp;amp;User();&lt;br /&gt;
+system(&quot;nano /var/spool/cron/crontabs/$user&quot;);&lt;br /&gt;
+system(&quot;sleep 2&quot;);&lt;br /&gt;
+print &quot;Processo Concluido.A retornar para o menu inicialn&quot;;&lt;br /&gt;
+system (&quot;sleep 2&quot;);&lt;br /&gt;
+&amp;amp;Main();&lt;br /&gt;
+}else{&lt;br /&gt;
+system(&quot;nano /etc/crontab&quot;);&lt;br /&gt;
+system(&quot;sleep 2&quot;);&lt;br /&gt;
+print &quot;Processo Concluido.A retornar para o menu inicialn&quot;;&lt;br /&gt;
+system (&quot;sleep 2&quot;);&lt;br /&gt;
+&amp;amp;Main();&lt;br /&gt;
+}&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub Adicionar{&lt;br /&gt;
+&amp;amp;Minutos();&lt;br /&gt;
+&amp;amp;Horas();&lt;br /&gt;
+&amp;amp;Dia();&lt;br /&gt;
+&amp;amp;Mes();&lt;br /&gt;
+&amp;amp;DiaSemana();&lt;br /&gt;
+&amp;amp;Comando();&lt;br /&gt;
+&amp;amp;Final();&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub Minutos{&lt;br /&gt;
+print &quot;Introduza os parametros de agendamenton&quot;;&lt;br /&gt;
+print &quot;Introduza os minutosn&quot;;&lt;br /&gt;
+print (&quot;Se desejar que o script seja executado em todos os minutos - pressione an&quot;);&lt;br /&gt;
+print (&quot;Se desejar especificar o minuto - pressione c n&quot;);&lt;br /&gt;
+chomp($opt = );&lt;br /&gt;
+if ($opt eq &quot;a&quot;){&lt;br /&gt;
+$min = &quot;*&quot;;&lt;br /&gt;
+}elsif($opt eq &quot;c&quot;){&lt;br /&gt;
+&amp;amp;Validar();&lt;br /&gt;
+$min=$val;&lt;br /&gt;
+}else{&lt;br /&gt;
+print &quot;opção inválidan&quot;;&lt;br /&gt;
+system(&quot;clear&quot;);&lt;br /&gt;
+&amp;amp;Minutos();&lt;br /&gt;
+}&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub Horas{&lt;br /&gt;
+print &quot;Introduza as horasn&quot;;&lt;br /&gt;
+print (&quot;Se desejar que o script seja executado em todos as horas - pressione an&quot;);&lt;br /&gt;
+print(&quot;Se desejar especificar as horas - pressione c n&quot;) ;&lt;br /&gt;
+chomp($opt = );&lt;br /&gt;
+if ($opt eq &quot;a&quot;){&lt;br /&gt;
+$horas = &quot;*&quot;;&lt;br /&gt;
+}elsif($opt eq &quot;c&quot;){&lt;br /&gt;
+&amp;amp;Validar();&lt;br /&gt;
+$horas = $val;&lt;br /&gt;
+}else{&lt;br /&gt;
+system(&quot;clear&quot;);&lt;br /&gt;
+print &quot;opção inválidan&quot;;&lt;br /&gt;
+&amp;Horas;&lt;br /&gt;
+}&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub Dia{&lt;br /&gt;
+print &quot;Introduza os dian&quot;;&lt;br /&gt;
+print (&quot;Se desejar que o script seja executado em todos os dias - pressione an&quot;);&lt;br /&gt;
+print (&quot;Se desejar especificar o dia - pressione c n&quot;) ;&lt;br /&gt;
+chomp($opt = );&lt;br /&gt;
+if ($opt eq &quot;a&quot;){&lt;br /&gt;
+$dia = &quot;*&quot;;&lt;br /&gt;
+}elsif($opt eq &quot;c&quot;){&lt;br /&gt;
+&amp;amp;Validar();&lt;br /&gt;
+$dia = $val;&lt;br /&gt;
+}else{&lt;br /&gt;
+print &quot;opção inválidan&quot;;&lt;br /&gt;
+system(&quot;clear&quot;);&lt;br /&gt;
+&amp;amp;Dia();&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;sub Mes{&lt;br /&gt;
+print &quot;mesn&quot;;&lt;br /&gt;
+print (&quot;Se desejar que o script seja executado todos os meses - pressione an&quot;);&lt;br /&gt;
+print (&quot; Se desejar especificar o mes - pressione c n&quot;) ;&lt;br /&gt;
+chomp($opt = );&lt;br /&gt;
+if ($opt eq &quot;a&quot;){&lt;br /&gt;
+$mes = &quot;*&quot;;&lt;br /&gt;
+}elsif($opt eq &quot;c&quot;){&lt;br /&gt;
+&amp;amp;Validar();&lt;br /&gt;
+$mes= $val;&lt;br /&gt;
+}else{&lt;br /&gt;
+print &quot;opção inválidan&quot;;&lt;br /&gt;
+system(&quot;clear&quot;);&lt;br /&gt;
+&amp;amp;Mes();&lt;br /&gt;
+}&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub DiaSemana{&lt;br /&gt;
+print &quot;Dia da Semann&quot;;&lt;br /&gt;
+print(&quot;Se desejar que o script seja executado todos os diass - pressione an&quot;);&lt;br /&gt;
+print(&quot;Se desejar especificar o dia - pressione c n&quot;) ;&lt;br /&gt;
+chomp($opt = );&lt;br /&gt;
+if ($opt eq &quot;a&quot;){&lt;br /&gt;
+$diasemana=&quot;*&quot;;&lt;br /&gt;
+}elsif($opt eq &quot;c&quot;){&lt;br /&gt;
+&amp;amp;Validar();&lt;br /&gt;
+$diasemana = $val;&lt;br /&gt;
+}else{&lt;br /&gt;
+print &quot;opção inválidan&quot;;&lt;br /&gt;
+system(&quot;clear&quot;);&lt;br /&gt;
+&amp;amp;DiaSemana();&lt;/p&gt;
+&lt;p&gt;}&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub Comando(){&lt;br /&gt;
+print (&quot;Introduza o comando ou script a executarn&quot;);&lt;/p&gt;
+&lt;p&gt;chomp(my $script = );&lt;br /&gt;
+$comando = $script;&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub User(){&lt;br /&gt;
+chomp($user = `whoami`);&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub ChUser(){&lt;br /&gt;
+print &quot;Escolha o utilizador que vai executar o script/comandon&quot;;&lt;br /&gt;
+chomp($user = );&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;#funcoes de validação&lt;br /&gt;
+sub Validar(){&lt;br /&gt;
+print &quot;Introduza o valorn&quot;;&lt;br /&gt;
+chomp($val = );&lt;br /&gt;
+if ($val =~ /d,?/?-?/){&lt;br /&gt;
+print &quot;Valor guardadon&quot;;&lt;br /&gt;
+system(&quot;clear&quot;);&lt;br /&gt;
+}else{&lt;br /&gt;
+&amp;amp;ErrorVal();&lt;br /&gt;
+}&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;sub ErrorVal(){&lt;br /&gt;
+print &quot;Valor inválidon&quot;;&lt;br /&gt;
+print &quot;Deseja sair ? se sim pressione Sn&quot;;&lt;br /&gt;
+print &quot;Senão, se quiser voltar a repetir este passo pressione R&quot;;&lt;br /&gt;
+chomp($opt= );&lt;br /&gt;
+if($opt eq &quot;S&quot;){&lt;br /&gt;
+exit;&lt;br /&gt;
+}elsif($opt eq &quot;R&quot;){&lt;br /&gt;
+system(&quot;clear&quot;);&lt;br /&gt;
+&amp;amp;Validar();&lt;/p&gt;
+&lt;p&gt;}else{&lt;br /&gt;
+print &quot;Opção erradan&quot;;&lt;br /&gt;
+&amp;amp;ErrorVal();&lt;br /&gt;
+}&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;#função relativa a verificaçao do user id e sua respectiva config-&lt;/p&gt;
+&lt;p&gt;sub Final(){&lt;br /&gt;
+if ($uid != 0){&lt;br /&gt;
+&amp;amp;User();&lt;br /&gt;
+open(FILE, &quot;&amp;gt;&amp;gt;/var/spool/cron/crontabs/$user&quot;);&lt;br /&gt;
+print FILE &quot;$min $horas $mes $dia $diasemana $comandon&quot;;&lt;br /&gt;
+close(FILE);&lt;br /&gt;
+}else{&lt;br /&gt;
+&amp;amp;ChUser();&lt;br /&gt;
+open(FILE, &quot;&amp;gt;&amp;gt;/etc/crontab&quot;);&lt;br /&gt;
+print FILE &quot;$min $horas $mes $dia $diasemana $user $comandon&quot;;&lt;br /&gt;
+close(FILE);&lt;br /&gt;
+}&lt;br /&gt;
+}&lt;br /&gt;
+[/perl]&lt;br /&gt;
+&lt;strong&gt;Update: Adicionados novos verificadores de erros&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Update: Adicionadas novas funções , corrigidos pequenos bugs.&lt;/strong&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 14 Sep 2011 20:55:19 +0100</pubDate>
-        <link>http://localhost:4000/android/palestra/2011/09/14/palestra-sobre-desenvolvimento-em-android-na-estg.html</link>
-        <guid isPermaLink="true">http://localhost:4000/android/palestra/2011/09/14/palestra-sobre-desenvolvimento-em-android-na-estg.html</guid>
-        
-        
-        <category>android</category>
-        
-        <category>palestra</category>
-        
-      </item>
-    
-      <item>
-        <title>Inicio do meu blog</title>
-        <description>&lt;p&gt;Começar por me apresentar .Bem chamo-me Rubem Mota , nome invulgar diga-se de passagem.Tenho o curso de técnológico de informática ,e sou um ávido fã de musica , desportos radicais , bombeiros ,música , anime , Magic the gathering.E nos ultimos tenho despertado um interesse para programação que começou a aparecer durante o curso mas depois de sair do curso se desvaneceu.&lt;/p&gt;
-
-&lt;p&gt;Quero usar este blog como portfólio , diário de teorias e ideias , tutorias , noticias , artigos sobre várias áreas entre outras coisas .&lt;/p&gt;
-
-&lt;p&gt;E assim concluo a minha apresentação.&lt;/p&gt;
-
-&lt;p&gt;Cumps&lt;/p&gt;
-
-&lt;p&gt;Rubem Mota&lt;/p&gt;
-</description>
-        <pubDate>Wed, 14 Sep 2011 20:53:05 +0100</pubDate>
-        <link>http://localhost:4000/2011/09/14/inicio-do-meu-blog.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2011/09/14/inicio-do-meu-blog.html</guid>
+        <pubDate>Tue, 24 Jan 2012 23:03:15 +0000</pubDate>
+        <link>http://localhost:4000/2012/01/24/perlscript-setup-crontab.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2012/01/24/perlscript-setup-crontab.html</guid>
         
         
       </item>

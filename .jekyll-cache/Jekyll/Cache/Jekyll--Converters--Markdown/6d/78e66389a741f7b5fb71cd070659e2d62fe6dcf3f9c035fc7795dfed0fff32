@@ -1,0 +1,27 @@
+I"�<p>Recentemente foi-me lançado o desafio de migrar um servidor de svn para git , e comecei logo a procura de importações directas,
+sendo que encontrei sugestões tais como o  <a href="https://github.com/nirvdrum/svn2git/" title="svn2git">svn2git</a> e <a href="http://subgit.com/,&quot;subit&quot;">subGit</a>.</p>
+
+<p>No entanto não se adequavam ao que se pretendia fazer, então após mais alguma pesquisa, encontrei várias referências a um comando do git que permitia
+clonar um repositório de SVN para Git e conseguir <strong>manter o histórico</strong> do mesmo sem configuraçoes extra ou programa externos. O comando em causa é o</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git svn clone http://svn/</code></pre></figure>
+
+<p>Atráves deste comando é efectuado um pedido ao servidor de svn e será criada uma nova directória para o repositório em causa, sendo que este comando tem a possibilidade de aceitar os parametros que podem ser passados para os <strong>init</strong> e <strong>fetch</strong> da utilização de git.
+No entanto de nada nos serve um clone de um
+repositório sem os logs e o mapeamento dos autores dos commits para o sistema que está a ser utilizado. Para tal basta utilizar os seguintes comandos.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">svn log <span class="nt">--xml</span> | <span class="nb">grep</span> <span class="s2">"&lt;author&gt;"</span> | <span class="nb">sort</span> <span class="nt">-u</span> | perl <span class="nt">-pe</span> <span class="s1">'s/.*&gt;(.*?)&lt;.*/$1 = /'</span> | <span class="nb">tee </span>users.txt</code></pre></figure>
+
+<p>Este primeiro comando deverá ser executado no servidor de svn actual , com este comando será possivel gerar um ficheiro com as informações relativas a todos
+os autores de commits do svn em causa. Este ficheiro será utilizado como ficheiro de mapeamento de migração de commits e logs para o Git.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git svn clone <span class="nt">--stdlayout</span> <span class="nt">--no-metadata</span> <span class="nt">--authors-file</span><span class="o">=</span>users.txt svn://hostname/path dest_dir-tmp</code></pre></figure>
+
+<p>Este segundo comando irá fazer clone do repositório no servidor de SVN e irá criar um repositório de Git local, com a informação de todos os commits e logs deste novo repositório.
+Será necessário ainda especificar o <strong>remote origin</strong> que iremos utilizar para todas as ações futuras , para tal basta executar os seguintes comandos:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git remote add origin git@server:user/project-name.git
+git push origin <span class="nt">--all</span></code></pre></figure>
+
+<p>A partir deste momento será possivel sincronizar o repositório migrado com o servidor de Git.</p>
+:ET

@@ -1,0 +1,57 @@
+I"�<p>Este é um exemplo para criar um script para fazer auto join no irc.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">on <span class="k">*</span>:START:<span class="o">{</span>
+    .server chat.eu.freenode.net <span class="nt">-i</span>
+    .server <span class="nt">-m</span> irc.network <span class="nt">-i</span> <span class="o">(</span>esta é a sintaxe que você tem que usar para utilizar este script para outras redes.<span class="o">)</span>
+<span class="o">}</span>
+
+on <span class="k">*</span>:NOTICE:<span class="k">*</span>This nickname is registered and protected<span class="k">*</span>:<span class="k">*</span>:<span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> freenode <span class="o">)</span> <span class="o">{</span>
+        .msg nickserv IDENTIFY <span class="o">}</span>
+    elseif <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> <span class="o">)</span> <span class="o">{</span>
+        .msg nickserv IDENTIFY <span class="o">}</span>
+<span class="o">}</span>
+
+on <span class="k">*</span>:NOTICE:<span class="k">*</span>Password accepted<span class="k">*</span>:<span class="k">*</span>:<span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> freenode<span class="o">)</span> <span class="o">{</span>
+        <span class="nb">join</span>
+    <span class="o">}</span>
+    elseif <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> <span class="o">)</span> <span class="o">{</span>
+        <span class="nb">join</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Agora irei explicar este script:</p>
+
+<p>1ª Parte :</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">on <span class="k">*</span>:START:<span class="o">{</span>
+    .server freenode <span class="nt">-i</span>
+    .server <span class="nt">-m</span> irc.network <span class="nt">-i</span> <span class="o">(</span>esta é a sintaxe que você tem que usar para utilizar este script para outras redes.<span class="o">)</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Nesta parte definimos a que redes é que queremos que o script se ligue. Mas atenção a 2 factores importantes:
+-Não esquecer the usar o argumento “-m” no caso de utilizarmos o script para nos ligarmos a várias redes.</p>
+
+<p>2ª Parte:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">on <span class="k">*</span>:NOTICE:<span class="k">*</span>This nickname is registered and protected<span class="k">*</span>:<span class="k">*</span>:<span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> Freenode <span class="o">)</span> <span class="o">{</span>
+        .msg nickserv IDENTIFY <span class="o">}</span>
+    elseif <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> <span class="o">)</span> <span class="o">{</span>
+        .msg nickserv IDENTIFY <span class="o">}</span></code></pre></figure>
+
+<p>Neste parte realizamos a identificação do nick .E caso queiram ter várias sessões na mesma rede podem usar um “else if”.</p>
+
+<p>3ª Parte:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">on <span class="k">*</span>:NOTICE:<span class="k">*</span>Password accepted<span class="k">*</span>:<span class="k">*</span>:<span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> freenode<span class="o">)</span> <span class="o">{</span>
+        <span class="nb">join</span>
+    <span class="o">}</span> elseif <span class="o">(</span><span class="nv">$nick</span> <span class="o">==</span> NickServ <span class="o">&amp;&amp;</span> <span class="nv">$network</span> <span class="o">==</span> <span class="o">)</span> <span class="o">{</span>
+        <span class="nb">join</span>
+   <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Por fim depois de ter identificado o nick , irá entrar nos canais que definiu.</p>
+:ET

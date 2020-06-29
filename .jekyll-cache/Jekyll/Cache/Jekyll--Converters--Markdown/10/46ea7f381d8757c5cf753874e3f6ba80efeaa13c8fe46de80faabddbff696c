@@ -1,0 +1,105 @@
+I"!"<p>Quem já ouviu falar de Perl e quis aprender e depois pensou mas como é que vou aprender isto , ou melhor de que maneira é que vou aprender Perl.E para que serve o Perl. A  pensar nessas questões criei esta rubrica para vos mostrar como fazer algumas coisas. Para que servem algumas funções entre outros aspectos importantes de referir.</p>
+
+<p><img src="http://seeklogo.com/images/P/PERL-logo-392C2FBE62-seeklogo.com.gif" alt="" title="perl" /></p>
+
+<p>Este artigo vai estar divido em 3 partes:</p>
+
+<ul>
+  <li>Perl o que é ?</li>
+  <li>O que é necessário para correr perl?</li>
+  <li>Introdução a conceitos básicos.</li>
+</ul>
+
+<p><strong>Perl o que é?</strong></p>
+
+<p>A linguagem de programação PERL foi desenvolvida em 1987 por Larry Wall e serviu de base para muitas linguagens modernas de programação , tais como javascript , ruby , etc… O perl é caracterizado por ser uma linguagem de programação amplamente usada por administradores de sistemas , hackers , crackers  e  webdevelopers.Tem os seguintes pontos fortes:</p>
+
+<ul>
+  <li>Extremamente rápida a trabalhar com strings/arrays/hash’s/regex’s;</li>
+  <li>Corre em mais de 100 plataformas diferentes;</li>
+  <li>Pode ser utilizada para webdevelopment , desempenhando papeis geralmente ocupados por php/asp/etc;</li>
+  <li>Suporte unicode;</li>
+  <li>Actualmente permite programação orientada a objectos e também procedural ;</li>
+  <li>Tem uma enorme comunidade de developers que desenvolvem módulos para agilizar o trabalho dos programadores. Para termos acesso a esses módulos basta ir ao site CPAN.</li>
+  <li>Suporta integração com bases de dados;</li>
+  <li>No entanto é uma linguagem mais orientada para scripting , ao seja pequenos programas para automatizar tarefas.</li>
+</ul>
+
+<p><strong>O que é necessário para correr perl?</strong></p>
+
+<p>Para correr o perl nas nossa máquinas é preciso ter o perl instalado , em sistemas *Unix e MacOS o Perl já vem instalado por defeito. Em sistemas Windows basta fazer download da aplicação <a href="http://strawberryperl.com/" title="Strawberry Perl">Strawberry Perl</a> e instalar e ficarão com o perl instalado no vosso computador.</p>
+
+<p>Para programarem em Perl eu recomendo o software <a href="http://padre.perlide.org/" title="Padre Perl">Padre Perl</a> (corre em sistemas Linux e Windows) ou então utilizem o <a href="http://www.eclipse.org/" title="Eclipse">eclipse</a> com o plugin <a href="http://www.epic-ide.org/" title="EPIC IDE">Epic IDE</a></p>
+
+<p><strong>Introdução aos conceitos básicos</strong></p>
+
+<p>E finalmente chegamos a parte mais pratica deste artigo. Aqui irei mostrar como criar um programa que imprime uma mensagem para o ecrã e outro que vos irá pedir o nome e imprimir uma mensagem de boas vindas. Então mãos a obra. Depois de abrirem o vosso IDE. Escrevam o seguinte e guardem o ficheiro como helloworld.pl . De referir o .pl refere-se a extensão que os scripts em perl tem. Então depois de copiarem este pequeno script façam executar no vosso IDE para verem o resultado.</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="c1">#!/usr/bin/perl
+</span>
+
+<span class="k">use</span> <span class="nv">warnings</span> <span class="p">;</span>
+
+<span class="k">use</span> <span class="nv">strict</span><span class="p">;</span>
+
+<span class="k">print</span> <span class="p">"</span><span class="s2">Bem vindos ao Perl</span><span class="p">";</span></code></pre></figure>
+
+<p>Agora começam a pensar mas então o que e que e cada coisa que está ali .Para mim parece chinês use isto , print aquilo .Bem é bastante fácil de entender  e irei explicar passo a passo cada coisa para que vocês fiquem a perceber tudo.</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="c1">#!/usr/bin/perl</span></code></pre></figure>
+
+<p>Esta linha é bastante importante , é logo a primeira linha a ser escrita e não pode ter espaços nem ficar na segunda linha do script porque senão irá dar erro. Quando um interpretador executa um ficheiro perl , ele tem que saber que o ficheiro em questão é um ficheiro perl e que tipo de interpretador e que tem usar e nesta linha nós indicamos isso.</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="k">use</span> <span class="nv">warnings</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nv">strict</span><span class="p">;</span></code></pre></figure>
+
+<p>Nesta situação usamos 2 pragmas , um pragma é uma extensão ao programa. Ao seja vamos incluir funções que não vem por defeito num script. Para tal temos que usar a função <strong>use</strong> seguida do nome do pragma. Neste caso usei o pragma warnings e strict. O pragma warnings é responsável por nos avisar de possíveis erros de sintaxe ou mesmo de programação. Enquanto que o pragma Strict permite uma melhor organização e estrutura a nível de sintaxe , declaração de variáveis , procedimentos , etc.</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="k">print</span> <span class="p">"</span><span class="s2">Bem vindos ao Perl</span><span class="p">";</span></code></pre></figure>
+
+<p>Por fim a função <strong>print</strong> , esta função irá imprimir para o ecrã aquilo que declaramos.</p>
+
+<p>Agora iremos criar um pequeno programar que irá pedir o nome de utilizador e imprimir uma mensagem de boas vindas no ecrã.</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="c1">#!/usr/bin/perl
+</span>
+
+<span class="k">use</span> <span class="nv">warnings</span> <span class="p">;</span>
+
+<span class="k">use</span> <span class="nv">strict</span><span class="p">;</span>
+
+<span class="k">print</span> <span class="p">"</span><span class="s2">Introduza o seu nomen</span><span class="p">";</span>
+
+<span class="k">my</span> <span class="nv">$nome</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nv">stdin</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;/</span><span class="nv">stdin</span><span class="o">&gt;</span>
+
+<span class="nb">chomp</span> <span class="p">(</span><span class="nv">$nome</span><span class="p">)</span> <span class="p">;</span>
+
+<span class="k">print</span> <span class="p">"</span><span class="s2">Bem vindos ao Perl </span><span class="si">$nome</span><span class="p">";</span></code></pre></figure>
+
+<p>Neste script introduzi 5 funções novas:</p>
+
+<ul>
+  <li><strong>my</strong>: Esta função é usada para declarar qualquer tipo de variáveis. Mas a sua utilização só e obrigatória se tivermos usado o pragma strict. Caso não tenhamos usado só é obrigatório utilizar dentro de funções(mas isso fica para outro tutorial ;) );</li>
+  <li><strong>$nome:</strong> é a nossa variável , para se declarar uma variável usa-se o simbolo <strong>$</strong> ;</li>
+  <li>: Esta função é utilizada para ler o que é introduzido pelo teclado.Ao estarmos a igual a variavel $nome a esta função , estamos a dizer que a variável nome ira ter o valor do <stdin>;</stdin></li>
+  <li><strong>n</strong> : usando esta expressão num <strong>print</strong> iremos dizer ao programa que depois de imprimir o conteúdo do print deverá criar um nova linha(carregar no enter) ;</li>
+  <li><strong>chomp</strong> : esta função é das mais importantes que se podem utilizar , visto que elimina os n de todos os valores da variável que queremos.</li>
+  <li>Por fim no print chama-mos a variável $nome e ira imprimir o seu valor.</li>
+</ul>
+
+<p>Já agora fica uma pequena dica ;)</p>
+
+<p>Em vez de fazerem isto :</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="k">my</span> <span class="nv">$nome</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nv">stdin</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;/</span><span class="nv">stdin</span><span class="o">&gt;</span>
+
+<span class="nb">chomp</span> <span class="p">(</span><span class="nv">$nome</span><span class="p">)</span> <span class="p">;</span></code></pre></figure>
+
+<p>Podem fazer logo isto :</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="nb">chomp</span><span class="p">(</span><span class="k">my</span> <span class="nv">$nome</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nv">stdin</span><span class="o">&gt;</span><span class="p">);</span> </code></pre></figure>
+<p>&lt;/stdin&gt;</p>
+
+<p>Que alem de deixar o código mais organizado , agiliza a escrita de código.</p>
+:ET

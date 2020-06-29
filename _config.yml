@@ -7,7 +7,6 @@ author: Rubem Mota
 logo: /static/img/avatar.png
 github: https://github.com/rubemlrm
 about: Programador / Administrador de Sistemas
-theme: jekyll-theme-hacker
 baseurl: ""
 url: ""
 
@@ -39,3 +38,6 @@ per_page: 20
 paginate_path: "/page:num/"
 markdown: kramdown
 gems: [jekyll-paginate, jekyll-gist]
+
+plugins:
+  - jekyll-gist
