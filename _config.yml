@@ -9,7 +9,7 @@ github: https://github.com/rubemlrm
 about: Programador / Administrador de Sistemas
 baseurl: ""
 url: ""
-
+theme: jekyll-theme-hydeout
 allowsearch: true
 
 disqus_shortname: rubemlrmcom
@@ -33,11 +33,10 @@ share:
 enableTags: true
 tagarray: []
 
-paginate: 20
-per_page: 20
+paginate: 5
 paginate_path: "/page:num/"
 markdown: kramdown
-gems: [jekyll-paginate, jekyll-gist]
-
+remote_theme: fongandrew/hydeout
 plugins:
   - jekyll-gist
+  - jekyll-paginate

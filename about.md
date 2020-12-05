@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sobre
-nav-menu: true
+sidebar_link: true
 permalink: /about/
 ---
 

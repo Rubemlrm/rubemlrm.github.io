@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Rubem Mota</title>
-    <description>Personal Blog</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 20 Jun 2020 13:08:22 +0100</pubDate>
-    <lastBuildDate>Sat, 20 Jun 2020 13:08:22 +0100</lastBuildDate>
-    <generator>Jekyll v4.1.0</generator>
-    
-      <item>
-        <title>Migração de SVN para GIT</title>
-        <description>&lt;p&gt;Recentemente foi-me lançado o desafio de migrar um servidor de svn para git , e comecei logo a procura de importações directas,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-05T14:56:56+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rubem Mota</title><subtitle>Personal Blog</subtitle><author><name>Rubem Mota</name></author><entry><title type="html">Migração de SVN para GIT</title><link href="http://localhost:4000/git/svn/dicas/2017/07/20/migrate-from-svn-to-git.html" rel="alternate" type="text/html" title="Migração de SVN para GIT" /><published>2017-07-20T22:16:06+01:00</published><updated>2017-07-20T22:16:06+01:00</updated><id>http://localhost:4000/git/svn/dicas/2017/07/20/migrate-from-svn-to-git</id><content type="html" xml:base="http://localhost:4000/git/svn/dicas/2017/07/20/migrate-from-svn-to-git.html">&lt;p&gt;Recentemente foi-me lançado o desafio de migrar um servidor de svn para git , e comecei logo a procura de importações directas,
 sendo que encontrei sugestões tais como o  &lt;a href=&quot;https://github.com/nirvdrum/svn2git/&quot; title=&quot;svn2git&quot;&gt;svn2git&lt;/a&gt; e &lt;a href=&quot;http://subgit.com/,&amp;quot;subit&amp;quot;&quot;&gt;subGit&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;No entanto não se adequavam ao que se pretendia fazer, então após mais alguma pesquisa, encontrei várias referências a um comando do git que permitia
@@ -36,24 +23,7 @@ Será necessário ainda especificar o &lt;strong&gt;remote origin&lt;/strong&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git remote add origin git@server:user/project-name.git
 git push origin &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;A partir deste momento será possivel sincronizar o repositório migrado com o servidor de Git.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 20 Jul 2017 22:16:06 +0100</pubDate>
-        <link>http://localhost:4000/git/svn/dicas/2017/07/20/migrate-from-svn-to-git.html</link>
-        <guid isPermaLink="true">http://localhost:4000/git/svn/dicas/2017/07/20/migrate-from-svn-to-git.html</guid>
-        
-        
-        <category>git</category>
-        
-        <category>svn</category>
-        
-        <category>dicas</category>
-        
-      </item>
-    
-      <item>
-        <title>De volta a escrita</title>
-        <description>&lt;p&gt;Ora viva,&lt;/p&gt;
+&lt;p&gt;A partir deste momento será possivel sincronizar o repositório migrado com o servidor de Git.&lt;/p&gt;</content><author><name>Rubem Mota</name></author><category term="git" /><category term="svn" /><category term="dicas" /><summary type="html">Recentemente foi-me lançado o desafio de migrar um servidor de svn para git , e comecei logo a procura de importações directas, sendo que encontrei sugestões tais como o svn2git e subGit.</summary></entry><entry><title type="html">De volta a escrita</title><link href="http://localhost:4000/2017/07/17/welcome-to-jekyll.html" rel="alternate" type="text/html" title="De volta a escrita" /><published>2017-07-17T22:16:06+01:00</published><updated>2017-07-17T22:16:06+01:00</updated><id>http://localhost:4000/2017/07/17/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2017/07/17/welcome-to-jekyll.html">&lt;p&gt;Ora viva,&lt;/p&gt;
 
 &lt;p&gt;Já faz algum tempo que andava afastado deste mundo dos blogs e companhia, e achei
 que estava na hora de voltar a fazer um projecto do género.
@@ -68,18 +38,7 @@ tenho aprofundado mais os meus conhecimentos em &lt;strong&gt;c#/vb.net&lt;/stro
 &lt;p&gt;Além da área de programação, tambem tenho experiencia em gestão de servidores Linux,
 mais concretamente com as distribuições Debian/Arch/Fedora.&lt;/p&gt;
 
-&lt;p&gt;No meu tempo livre sou praticante de Karaté e bombeiro voluntário.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 17 Jul 2017 22:16:06 +0100</pubDate>
-        <link>http://localhost:4000/2017/07/17/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/17/welcome-to-jekyll.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Converter Debian Wheezy para Debian Testing</title>
-        <description>&lt;p&gt;Com o recente lançamento do Debian como versão final , foi anunciada a versão 8 desta distribuição.
+&lt;p&gt;No meu tempo livre sou praticante de Karaté e bombeiro voluntário.&lt;/p&gt;</content><author><name>Rubem Mota</name></author><summary type="html">Ora viva,</summary></entry><entry><title type="html">Converter Debian Wheezy para Debian Testing</title><link href="http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing.html" rel="alternate" type="text/html" title="Converter Debian Wheezy para Debian Testing" /><published>2013-05-12T17:46:49+01:00</published><updated>2013-05-12T17:46:49+01:00</updated><id>http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing</id><content type="html" xml:base="http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing.html">&lt;p&gt;Com o recente lançamento do Debian como versão final , foi anunciada a versão 8 desta distribuição.
 A versão 8 desta distribuição terá o codename de “Jessie” e será lançado durante 2015. Parassá os repositórios do Debian Jessie ainda estão com os pacotes que estão disponiveis para o Debian Wheezy , sendo que parassá os pacotes disponíveis no repo Security-updates do Jessie ainda não estão a ser mantidas pela equipa oficial do debian.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://1.bp.blogspot.com/-R-IkMedx9EE/UYYcktIrKFI/AAAAAAAADJw/0OkXQUJRuMY/s635/debian_logo1.jpg&quot; alt=&quot;&amp;quot;debian logo&amp;quot;&quot; /&gt;&lt;/p&gt;
@@ -100,23 +59,7 @@ Após este passo é necessário atualizar a lista de repositórios , para tal ba
 
 &lt;p&gt;Por fim é necessário actualizar o sistema , no entanto como se vai atualizar o sistema para uma versão acima , será necessário executar o comando:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get dist-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Sun, 12 May 2013 17:46:49 +0100</pubDate>
-        <link>http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing.html</link>
-        <guid isPermaLink="true">http://localhost:4000/tutorial/debian/2013/05/12/converter-debian-wheezy-para-debian-testing.html</guid>
-        
-        
-        <category>Tutorial</category>
-        
-        <category>Debian</category>
-        
-      </item>
-    
-      <item>
-        <title>Instalação do yaourt em ArchLinux</title>
-        <description>&lt;p&gt;Como utilizador de archlinux já há uns anos , surgiu a necessidade de instalar pacotes que estão disponíveis no AUR . No entanto instalar software que está disponível no AUR pode ser um pouco demoroso e tive necessidade de encontrar uma alternativa viável que me pudesse gerir as instalações a partir do AUR como a partir dos repos oficiais.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get dist-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Rubem Mota</name></author><category term="Tutorial" /><category term="Debian" /><summary type="html">Com o recente lançamento do Debian como versão final , foi anunciada a versão 8 desta distribuição. A versão 8 desta distribuição terá o codename de “Jessie” e será lançado durante 2015. Parassá os repositórios do Debian Jessie ainda estão com os pacotes que estão disponiveis para o Debian Wheezy , sendo que parassá os pacotes disponíveis no repo Security-updates do Jessie ainda não estão a ser mantidas pela equipa oficial do debian.</summary></entry><entry><title type="html">Instalação do yaourt em ArchLinux</title><link href="http://localhost:4000/archlinux/tutorial/2013/05/12/instalacao-yaourt-em-archlinux.html" rel="alternate" type="text/html" title="Instalação do yaourt em ArchLinux" /><published>2013-05-12T17:28:59+01:00</published><updated>2013-05-12T17:28:59+01:00</updated><id>http://localhost:4000/archlinux/tutorial/2013/05/12/instalacao-yaourt-em-archlinux</id><content type="html" xml:base="http://localhost:4000/archlinux/tutorial/2013/05/12/instalacao-yaourt-em-archlinux.html">&lt;p&gt;Como utilizador de archlinux já há uns anos , surgiu a necessidade de instalar pacotes que estão disponíveis no AUR . No entanto instalar software que está disponível no AUR pode ser um pouco demoroso e tive necessidade de encontrar uma alternativa viável que me pudesse gerir as instalações a partir do AUR como a partir dos repos oficiais.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://www.archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png&quot; alt=&quot;&amp;quot;arch logo&amp;quot;&quot; /&gt;&lt;/p&gt;
 
@@ -151,22 +94,7 @@ Agora irei deixar alguns exemplos de utilização do mesmo. Para fazer pesquisa 
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; yaourt &lt;span class=&quot;nt&quot;&gt;-Sb&lt;/span&gt; &amp;lt;pacote&amp;gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Estes são dos comandos mais utilizados , no entanto existe um leque enorme de possiveis comandos que podem ser executados. De referir ainda que devem executar o yaourt sempre como utilizador “normal” visto que durante a instalação dos pacotes será sempre pedida a vossa password , desta forma irão ter mais controlo sobre o que está a ser instalado.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 12 May 2013 17:28:59 +0100</pubDate>
-        <link>http://localhost:4000/archlinux/tutorial/2013/05/12/instalacao-yaourt-em-archlinux.html</link>
-        <guid isPermaLink="true">http://localhost:4000/archlinux/tutorial/2013/05/12/instalacao-yaourt-em-archlinux.html</guid>
-        
-        
-        <category>Archlinux</category>
-        
-        <category>Tutorial</category>
-        
-      </item>
-    
-      <item>
-        <title>[Script]Gerir VirtualHosts do Apache</title>
-        <description>&lt;p&gt;Ora boas tardes,&lt;/p&gt;
+&lt;p&gt;Estes são dos comandos mais utilizados , no entanto existe um leque enorme de possiveis comandos que podem ser executados. De referir ainda que devem executar o yaourt sempre como utilizador “normal” visto que durante a instalação dos pacotes será sempre pedida a vossa password , desta forma irão ter mais controlo sobre o que está a ser instalado.&lt;/p&gt;</content><author><name>Rubem Mota</name></author><category term="Archlinux" /><category term="Tutorial" /><summary type="html">Como utilizador de archlinux já há uns anos , surgiu a necessidade de instalar pacotes que estão disponíveis no AUR . No entanto instalar software que está disponível no AUR pode ser um pouco demoroso e tive necessidade de encontrar uma alternativa viável que me pudesse gerir as instalações a partir do AUR como a partir dos repos oficiais.</summary></entry><entry><title type="html">[Script]Gerir VirtualHosts do Apache</title><link href="http://localhost:4000/2012/08/18/scriptgerir-virtualhosts-no-apache.html" rel="alternate" type="text/html" title="[Script]Gerir VirtualHosts do Apache" /><published>2012-08-18T00:00:00+01:00</published><updated>2012-08-18T00:00:00+01:00</updated><id>http://localhost:4000/2012/08/18/scriptgerir-virtualhosts-no-apache</id><content type="html" xml:base="http://localhost:4000/2012/08/18/scriptgerir-virtualhosts-no-apache.html">&lt;p&gt;Ora boas tardes,&lt;/p&gt;
 
 &lt;p&gt;Depois de algum tempo sem escrever nada no blog , trago-vos um script em perl acabado de sair do forno que nos permite adicionar , remover , listar , verificar , desativar os nossos virtualhosts.&lt;/p&gt;
 
@@ -174,26 +102,30 @@ Agora irei deixar alguns exemplos de utilização do mesmo. Para fazer pesquisa 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;-add&lt;/strong&gt; : para adicionar um virtualhost no apache , para tal basta usar a seguinte sintax:&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-add&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-add&lt;/span&gt; www.rubemlrm.com rubemlrm &lt;span class=&quot;c&quot;&gt;#example&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;ex:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-add&lt;/span&gt; www.rubemlrm.com rubemlrm&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;-rem&lt;/strong&gt;: para remover um virtualhost no apache, para tal basta usar a seguinte sintax:&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-rem&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-rem&lt;/span&gt; www.rubemlrm.com &lt;span class=&quot;c&quot;&gt;#example&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;ex:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-rem&lt;/span&gt; www.rubemlrm.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;-dis&lt;/strong&gt; : para desativar um virtualhost no apache , para tal basta usar a seguinte syntax:&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-dis&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; &lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-dis&lt;/span&gt; www.rubemlrm.com &lt;span class=&quot;c&quot;&gt;#example&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;ex:&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; &lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./apache &lt;span class=&quot;nt&quot;&gt;-dis&lt;/span&gt; www.rubemlrm.com &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;-c&lt;/strong&gt; :Esta opção poderá receber um argumento que é o &lt;url&gt; para mostrar a informação do virtualhost , caso não se passe o argumento do url irá mostrar todos os .conf que estão na diretoria /etc/apache2/sites-enabled/. Para tal basta usar a seguinte sintax:&lt;/url&gt;&lt;/li&gt;
@@ -207,22 +139,12 @@ ou&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;-h&lt;/strong&gt; : Por fim temos esta opção para nos mostrar os comandos que temos disponíveis.&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;./apache &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;De seguida fica o código do script:
-true&lt;script src=&quot;https://gist.github.com/rubemlrm/3387796.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 18 Aug 2012 16:07:32 +0100</pubDate>
-        <link>http://localhost:4000/2012/08/18/scriptgerir-virtualhosts-no-apache.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2012/08/18/scriptgerir-virtualhosts-no-apache.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Verificar m&amp;aacute;quinas de rede</title>
-        <description>&lt;p&gt;Boas noites, depois de algum tempo sem postar aqui nada devido a escola .Deixo aqui um pequeno script em perl que permite testar as máquinas de rede para ver quais é que estão ativas na nossa rede informática. Para tal é preciso ter um ficheiro com os ips que queremos testar e o script trata do resto sozinho.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;De seguida fica o código do script:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;script src=&quot;https://gist.github.com/rubemlrm/3387796.js&quot;&gt; &lt;/script&gt;</content><author><name>{&quot;display_name&quot;=&gt;&quot;Rubem Mota&quot;, &quot;login&quot;=&gt;&quot;Rubemlrm&quot;, &quot;email&quot;=&gt;&quot;rubemmota89@gmail.com&quot;, &quot;url&quot;=&gt;&quot;&quot;}</name><email>rubemmota89@gmail.com</email></author><summary type="html">Ora boas tardes,</summary></entry><entry><title type="html">Verificar máquinas de rede</title><link href="http://localhost:4000/2012/03/16/verificar-maquinas-de-rede.html" rel="alternate" type="text/html" title="Verificar máquinas de rede" /><published>2012-03-16T00:00:00+00:00</published><updated>2012-03-16T00:00:00+00:00</updated><id>http://localhost:4000/2012/03/16/verificar-maquinas-de-rede</id><content type="html" xml:base="http://localhost:4000/2012/03/16/verificar-maquinas-de-rede.html">&lt;p&gt;Boas noites, depois de algum tempo sem postar aqui nada devido a escola .Deixo aqui um pequeno script em perl que permite testar as máquinas de rede para ver quais é que estão ativas na nossa rede informática. Para tal é preciso ter um ficheiro com os ips que queremos testar e o script trata do resto sozinho.&lt;/p&gt;
 
 &lt;div class=&quot;language-perl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/perl&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;warnings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -261,18 +183,7 @@ true&lt;script src=&quot;https://gist.github.com/rubemlrm/3387796.js&quot;&gt; &
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$_n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&quot;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Fri, 16 Mar 2012 21:06:07 +0000</pubDate>
-        <link>http://localhost:4000/2012/03/16/verificar-maquinas-de-rede.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2012/03/16/verificar-maquinas-de-rede.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Verificar se utilizador existe</title>
-        <description>&lt;p&gt;Boas noites&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;display_name&quot;=&gt;&quot;Rubem Mota&quot;, &quot;login&quot;=&gt;&quot;Rubemlrm&quot;, &quot;email&quot;=&gt;&quot;rubemmota89@gmail.com&quot;, &quot;url&quot;=&gt;&quot;&quot;}</name><email>rubemmota89@gmail.com</email></author><summary type="html">Boas noites, depois de algum tempo sem postar aqui nada devido a escola .Deixo aqui um pequeno script em perl que permite testar as máquinas de rede para ver quais é que estão ativas na nossa rede informática. Para tal é preciso ter um ficheiro com os ips que queremos testar e o script trata do resto sozinho.</summary></entry><entry><title type="html">Verificar se utilizador existe</title><link href="http://localhost:4000/2012/02/23/scriptverificar-se-utilizador-existe.html" rel="alternate" type="text/html" title="Verificar se utilizador existe" /><published>2012-02-23T00:18:54+00:00</published><updated>2012-02-23T00:18:54+00:00</updated><id>http://localhost:4000/2012/02/23/scriptverificar-se-utilizador-existe</id><content type="html" xml:base="http://localhost:4000/2012/02/23/scriptverificar-se-utilizador-existe.html">&lt;p&gt;Boas noites&lt;/p&gt;
 &lt;p&gt;Desta vez venho apresentar mais um pequeno script feito por mim.Este script tem como fundamento verificar se um utilizador existe ou não no sistema Linux e se existir alem de nos mostrar uma mensagem a dizer que existe ainda vai identificar o UID desse utilizador.Caso contrário vai mostrar uma mensagem de erro a dizer que o utilizador não existe.Atenção não foram utilizados comandos bash por isso é tudo perl scripting.&lt;/p&gt;
 &lt;p&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-398&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[perl]&lt;/p&gt;
@@ -304,18 +215,7 @@ print &quot;O $utilizador NÃO se encontra criado no sisteman&quot;;&lt;br /&gt;
 &lt;p&gt;print &quot;o $utilizador JÁ se encontra criado no sistema! O seu UID é $uid !n&quot; ;&lt;br /&gt;
 }&lt;/p&gt;
 &lt;p&gt;[/perl]&lt;/p&gt;
-&lt;/FILE&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 23 Feb 2012 00:18:54 +0000</pubDate>
-        <link>http://localhost:4000/2012/02/23/scriptverificar-se-utilizador-existe.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2012/02/23/scriptverificar-se-utilizador-existe.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Sysadmin-toolbox</title>
-        <description>&lt;p&gt;Depois de algum tempo a programar em perl , decidi &quot;que tal por as minhas capacidades a prova&quot; e construi um painel administrativo em perl para gerir sistemas.&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-214&quot;&gt;&lt;/a&gt;E depois de algumas horas a programar , tenho uma versão 1 pronta a utilizar ainda com poucas funcionalidades é certo , mas para já considero que tem as funcionalidades básicas já implementadas , tais como:&lt;/p&gt;
+&lt;/FILE&gt;&lt;/p&gt;</content><author><name>{&quot;display_name&quot;=&gt;&quot;Rubem Mota&quot;, &quot;login&quot;=&gt;&quot;Rubemlrm&quot;, &quot;email&quot;=&gt;&quot;rubemmota89@gmail.com&quot;, &quot;url&quot;=&gt;&quot;http://rubemlrm.com&quot;}</name><email>rubemmota89@gmail.com</email></author><summary type="html">Boas noites Desta vez venho apresentar mais um pequeno script feito por mim.Este script tem como fundamento verificar se um utilizador existe ou n&amp;atilde;o no sistema Linux e se existir alem de nos mostrar uma mensagem a dizer que existe ainda vai&amp;nbsp;identificar&amp;nbsp;o UID desse utilizador.Caso contr&amp;aacute;rio vai mostrar uma mensagem de erro a dizer que o utilizador n&amp;atilde;o existe.Aten&amp;ccedil;&amp;atilde;o n&amp;atilde;o foram utilizados comandos bash por isso &amp;eacute; tudo perl scripting.</summary></entry><entry><title type="html">Sysadmin-toolbox</title><link href="http://localhost:4000/2012/02/16/perllinuxsysadmin-toolbox.html" rel="alternate" type="text/html" title="Sysadmin-toolbox" /><published>2012-02-16T00:00:00+00:00</published><updated>2012-02-16T00:00:00+00:00</updated><id>http://localhost:4000/2012/02/16/perllinuxsysadmin-toolbox</id><content type="html" xml:base="http://localhost:4000/2012/02/16/perllinuxsysadmin-toolbox.html">&lt;p&gt;Depois de algum tempo a programar em perl , decidi &quot;que tal por as minhas capacidades a prova&quot; e construi um painel administrativo em perl para gerir sistemas.&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-214&quot;&gt;&lt;/a&gt;E depois de algumas horas a programar , tenho uma versão 1 pronta a utilizar ainda com poucas funcionalidades é certo , mas para já considero que tem as funcionalidades básicas já implementadas , tais como:&lt;/p&gt;
 &lt;p&gt;-Adicionar/remover utilizadores;&lt;/p&gt;
 &lt;p&gt;-Possibilidade de fazer backups dos dados de um utilizador que se vai apagar;&lt;/p&gt;
 &lt;p&gt;-Gestão de crons;&lt;/p&gt;
@@ -328,18 +228,7 @@ print &quot;O $utilizador NÃO se encontra criado no sisteman&quot;;&lt;br /&gt;
 &lt;p&gt;Este projecto está disponível no github a partir do seguinte link : &lt;a href=&quot;https://github.com/Rubemlrm/sysadmin-toolbox&quot;&gt;https://github.com/Rubemlrm/sysadmin-toolbox&lt;/a&gt; .&lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
-&lt;p&gt;Para utilizar basta fazer download do projecto e configurar o ficheiro includes.pl que está na pasta includes , com o caminho correcto para o script.Espero que reportem possiveis bugs e sugestões =).&lt;/p&gt;
-</description>
-        <pubDate>Thu, 16 Feb 2012 15:25:13 +0000</pubDate>
-        <link>http://localhost:4000/2012/02/16/perllinuxsysadmin-toolbox.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2012/02/16/perllinuxsysadmin-toolbox.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Reportar Directorias Vazias</title>
-        <description>&lt;p&gt;Aqui fica um pequeno script para encontrar pastas vazias dentro de uma directoria.Este script utiliza o módulo File::Find::Rule para criar a listagem de todas as directorias e sub-directorias, utilizando uma directoria de partida.Este script pode servir de base para a criação de um script para gerir directorias e apagar directorias vazias caso seja necessário.Para tal basta fazer pequenas alterações .&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-209&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Para utilizar basta fazer download do projecto e configurar o ficheiro includes.pl que está na pasta includes , com o caminho correcto para o script.Espero que reportem possiveis bugs e sugestões =).&lt;/p&gt;</content><author><name>{&quot;display_name&quot;=&gt;&quot;Rubem Mota&quot;, &quot;login&quot;=&gt;&quot;Rubemlrm&quot;, &quot;email&quot;=&gt;&quot;rubemmota89@gmail.com&quot;, &quot;url&quot;=&gt;&quot;http://rubemlrm.com&quot;}</name><email>rubemmota89@gmail.com</email></author><summary type="html">Depois de algum tempo a programar em perl , decidi &quot;que tal por as minhas capacidades a prova&quot; e construi um painel administrativo em perl para gerir sistemas.E depois de algumas horas a programar , tenho uma versão 1 pronta a utilizar ainda com poucas funcionalidades é certo , mas para já considero que tem as funcionalidades básicas já implementadas , tais como: -Adicionar/remover utilizadores; -Possibilidade de fazer backups dos dados de um utilizador que se vai apagar; -Gestão de crons; -Funcionalidade para testar os pcs da rede.De forma a ver quais estão online e quais não estão; -Funcionalidade para encontrar pastas vazias e ficar com um registo das mesmas; -Funcionalidade para ver quais são os processos que estão a gastar mais recursos -Funcionalidade para adicionar vários utilizadores a uma máquina de forma automática -Funcionalidade para encontrar ficheiros que tenham um tamanho superior ao indicado.   Este projecto está disponível no github a partir do seguinte link : https://github.com/Rubemlrm/sysadmin-toolbox .     Para utilizar basta fazer download do projecto e configurar o ficheiro includes.pl que está na pasta includes , com o caminho correcto para o script.Espero que reportem possiveis bugs e sugestões =).</summary></entry><entry><title type="html">Reportar Directorias Vazias</title><link href="http://localhost:4000/2012/02/15/perlreportar-directorias-vazias.html" rel="alternate" type="text/html" title="Reportar Directorias Vazias" /><published>2012-02-15T18:22:09+00:00</published><updated>2012-02-15T18:22:09+00:00</updated><id>http://localhost:4000/2012/02/15/perlreportar-directorias-vazias</id><content type="html" xml:base="http://localhost:4000/2012/02/15/perlreportar-directorias-vazias.html">&lt;p&gt;Aqui fica um pequeno script para encontrar pastas vazias dentro de uma directoria.Este script utiliza o módulo File::Find::Rule para criar a listagem de todas as directorias e sub-directorias, utilizando uma directoria de partida.Este script pode servir de base para a criação de um script para gerir directorias e apagar directorias vazias caso seja necessário.Para tal basta fazer pequenas alterações .&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-209&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Para poderem executar este script teram que ter o módulo File::Find::Files instalado , para tal basta executarem o seguinte comando na linha de comandos:&lt;/p&gt;
 &lt;p&gt;[bash]&lt;/p&gt;
 &lt;p&gt;sudo cpan&lt;/p&gt;
@@ -379,18 +268,7 @@ my $total = @sub_dirs;&lt;br /&gt;
 my $vazio = @emptydirs;&lt;br /&gt;
 print &quot;Total directórios&quot; . $total .&quot;, directórios vazios &quot; . $vazio . &quot;n&quot;;&lt;/p&gt;
 &lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;[/perl]&lt;/p&gt;
-</description>
-        <pubDate>Wed, 15 Feb 2012 18:22:09 +0000</pubDate>
-        <link>http://localhost:4000/2012/02/15/perlreportar-directorias-vazias.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2012/02/15/perlreportar-directorias-vazias.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Gerir Cron's com o Perl</title>
-        <description>&lt;p&gt;Bem pessoal aqui fica um pequeno script para vos ajudar a a automatizar as vossas tarefas quando tiverem que mexer em crontabs.Este script surgiu numa aula de Sistemas Operativos em que tínhamos um exercício em que tínhamos que adicionar novos crons com o script. Mas para não limitar o script acrescentei mais umas funções.Tais como tornar a criação de um novo cron mais interactiva , apagar crons , gravar o cron na localização correcta consoante o utilizador que está a executar o script.&lt;/p&gt;
+&lt;p&gt;[/perl]&lt;/p&gt;</content><author><name>{&quot;display_name&quot;=&gt;&quot;Rubem Mota&quot;, &quot;login&quot;=&gt;&quot;Rubemlrm&quot;, &quot;email&quot;=&gt;&quot;rubemmota89@gmail.com&quot;, &quot;url&quot;=&gt;&quot;http://rubemlrm.com&quot;}</name><email>rubemmota89@gmail.com</email></author><summary type="html">Aqui fica um pequeno script para encontrar pastas vazias dentro de uma&amp;nbsp;directoria.Este script utiliza o m&amp;oacute;dulo File::Find::Rule para criar a listagem de todas as directorias e&amp;nbsp;sub-directorias, utilizando uma directoria de partida.Este script pode servir de base para a cria&amp;ccedil;&amp;atilde;o de um script para gerir directorias e apagar&amp;nbsp;directorias&amp;nbsp;vazias caso seja necess&amp;aacute;rio.Para tal basta fazer pequenas&amp;nbsp;altera&amp;ccedil;&amp;otilde;es&amp;nbsp;.</summary></entry><entry><title type="html">Gerir Cron’s com o Perl</title><link href="http://localhost:4000/2012/01/24/perlscript-setup-crontab.html" rel="alternate" type="text/html" title="Gerir Cron’s com o Perl" /><published>2012-01-24T23:03:15+00:00</published><updated>2012-01-24T23:03:15+00:00</updated><id>http://localhost:4000/2012/01/24/perlscript-setup-crontab</id><content type="html" xml:base="http://localhost:4000/2012/01/24/perlscript-setup-crontab.html">&lt;p&gt;Bem pessoal aqui fica um pequeno script para vos ajudar a a automatizar as vossas tarefas quando tiverem que mexer em crontabs.Este script surgiu numa aula de Sistemas Operativos em que tínhamos um exercício em que tínhamos que adicionar novos crons com o script. Mas para não limitar o script acrescentei mais umas funções.Tais como tornar a criação de um novo cron mais interactiva , apagar crons , gravar o cron na localização correcta consoante o utilizador que está a executar o script.&lt;/p&gt;
 &lt;p&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more-159&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[perl]&lt;br /&gt;
 #!/usr/bin/perl&lt;br /&gt;
@@ -588,14 +466,4 @@ close(FILE);&lt;br /&gt;
 }&lt;br /&gt;
 [/perl]&lt;br /&gt;
 &lt;strong&gt;Update: Adicionados novos verificadores de erros&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;Update: Adicionadas novas funções , corrigidos pequenos bugs.&lt;/strong&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 24 Jan 2012 23:03:15 +0000</pubDate>
-        <link>http://localhost:4000/2012/01/24/perlscript-setup-crontab.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2012/01/24/perlscript-setup-crontab.html</guid>
-        
-        
-      </item>
-    
-  </channel>
-</rss>
+&lt;strong&gt;Update: Adicionadas novas funções , corrigidos pequenos bugs.&lt;/strong&gt;&lt;/p&gt;</content><author><name>{&quot;display_name&quot;=&gt;&quot;Rubem Mota&quot;, &quot;login&quot;=&gt;&quot;Rubemlrm&quot;, &quot;email&quot;=&gt;&quot;rubemmota89@gmail.com&quot;, &quot;url&quot;=&gt;&quot;http://rubemlrm.com&quot;}</name><email>rubemmota89@gmail.com</email></author><summary type="html">Bem pessoal aqui fica um pequeno script para vos ajudar a a automatizar as vossas tarefas quando tiverem que mexer em crontabs.Este script surgiu numa aula de Sistemas Operativos em que t&amp;iacute;nhamos um exerc&amp;iacute;cio em que t&amp;iacute;nhamos que adicionar novos crons com o script. Mas para n&amp;atilde;o limitar o script acrescentei mais umas fun&amp;ccedil;&amp;otilde;es.Tais como tornar a cria&amp;ccedil;&amp;atilde;o de um novo cron mais interactiva , apagar crons , gravar o cron na localiza&amp;ccedil;&amp;atilde;o correcta consoante o utilizador que est&amp;aacute; a executar o script.</summary></entry></feed>
