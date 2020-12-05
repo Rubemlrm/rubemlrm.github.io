@@ -293,7 +293,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-admin
+  jekyll-admin (~> 0.10.2)
   jekyll-feed (~> 0.12)
   jekyll-gist
   jekyll-import

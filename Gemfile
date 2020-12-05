@@ -9,7 +9,7 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem 'jekyll-paginate'
   gem 'jekyll-gist'
-  gem 'jekyll-admin'
+  gem 'jekyll-admin', '~> 0.10.2'
   gem 'jekyll-import'
 end
 
