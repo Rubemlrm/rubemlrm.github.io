@@ -8,11 +8,6 @@ paginate_path: "/page:num/"
 plugins:
   - jekyll-gist
   - jekyll-paginate
-exclude:
-    - Gemfile
-    - Gemfile.lock
-    - LICENSE
-    - README.md
 
 # Site Author settings
 title: Rubem Mota
