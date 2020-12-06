@@ -3,6 +3,7 @@ title: Converter Debian Wheezy para Debian Testing
 layout: post
 date: '2013-05-12 16:46:49 +0000'
 date_gmt: '2013-05-12 16:46:49 +0000'
+excerpt_separator: <!--more-->
 categories:
 - Tutorial
 - Debian
@@ -14,6 +15,8 @@ A versão 8 desta distribuição terá o codename de "Jessie" e será lançado d
 
 !["debian logo"](http://1.bp.blogspot.com/-R-IkMedx9EE/UYYcktIrKFI/AAAAAAAADJw/0OkXQUJRuMY/s635/debian_logo1.jpg)
 
+
+<!--more-->
 
 Feita esta pequena apresentação do Jessie , vou explicar como actualizar o Debian Wheezy para Debian Jessie.
 

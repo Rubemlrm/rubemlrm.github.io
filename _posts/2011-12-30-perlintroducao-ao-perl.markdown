@@ -2,15 +2,15 @@
 title: Introdução ao Perl
 layout: post
 date: '2011-12-30 17:14:24 +0000'
+excerpt_separator: "<!--more-->"
 categories:
-- development
 - perl
 - tutorial
 ---
 
 Quem já ouviu falar de Perl e quis aprender e depois pensou mas como é que vou aprender isto , ou melhor de que maneira é que vou aprender Perl.E para que serve o Perl. A  pensar nessas questões criei esta rubrica para vos mostrar como fazer algumas coisas. Para que servem algumas funções entre outros aspectos importantes de referir.
 
-![](http://seeklogo.com/images/P/PERL-logo-392C2FBE62-seeklogo.com.gif "perl")
+![perl](/assets/images/perl.png)
 
 
 Este artigo vai estar divido em 3 partes:
@@ -19,6 +19,7 @@ Este artigo vai estar divido em 3 partes:
 *   O que é necessário para correr perl?
 *   Introdução a conceitos básicos.
 
+<!--more-->
 **Perl o que é?**
 
 A linguagem de programação PERL foi desenvolvida em 1987 por Larry Wall e serviu de base para muitas linguagens modernas de programação , tais como javascript , ruby , etc... O perl é caracterizado por ser uma linguagem de programação amplamente usada por administradores de sistemas , hackers , crackers  e  webdevelopers.Tem os seguintes pontos fortes:

@@ -1,42 +1,38 @@
-title: Rubem Mota
-subtitle: Programador / Administrador de Sistemas
-email: rubemmota89@gmail.com
-landing-title: Rubem Mota
-description: Personal Blog
-author: Rubem Mota
-logo: /static/img/avatar.png
-github: https://github.com/rubemlrm
-about: Programador / Administrador de Sistemas
-baseurl: ""
-url: ""
+#Jekyll general configs
 theme: jekyll-theme-hydeout
-allowsearch: true
-
-disqus_shortname: rubemlrmcom
-google_analytics: 'UA-39203492-1'
-
-# social settings
-500px_url:
-facebook_url:
-github_url: https://github.com/rubemlrm
-gitlab_url: https://gitlab.com/u/rubemlrm
-linkedin_url: https://www.linkedin.com/in/rubemlrm
-pinterest_url:
-slack_url:
-twitter_url: https://twitter.com/rubemlrm
-
-share:
-  twitter_username: rubemlrm
-  fb_appid: 000000000000
-
-
-enableTags: true
-tagarray: []
-
+remote_theme: fongandrew/hydeout
+markdown: kramdown
+highlighter: rouge
 paginate: 5
 paginate_path: "/page:num/"
-markdown: kramdown
-remote_theme: fongandrew/hydeout
 plugins:
   - jekyll-gist
   - jekyll-paginate
+
+
+# Site Author settings
+title: Rubem Mota
+email: rubemmota89@gmail.com
+tagline: Software Developer
+description: Software Developer
+author:
+  name: Rubem Mota
+  url: "rubemlrm.me"
+
+#theme settings
+allowsearch: true
+sidebar_home_link:  true
+
+
+disqus:
+  shortname: rubemlrmcom
+google_analytics: 'UA-39203492-1'
+
+# social settings
+github_url: https://github.com/rubemlrm
+gitlab_url: https://gitlab.com/u/rubemlrm
+linkedin_url: https://www.linkedin.com/in/rubemlrm
+twitter_url: https://twitter.com/rubemlrm
+
+enableTags: true
+tagarray: []

@@ -1,23 +1,13 @@
 ---
-layout: page
 title: Sobre
+layout: page
 sidebar_link: true
-permalink: /about/
+permalink: "/about/"
 ---
 
-Ora viva,
+Olá
 
-Já faz algum tempo que andava afastado deste mundo dos blogs e companhia, e achei
-que estava na hora de voltar a fazer um projecto do género.
-Este projecto vai server como um repositório de experiencias e dicas na área de programaçao e sistemas.
+Comecei a minha aventura tecnológica em 2004, fazendo um curso de nivel 4 relativo a técnico de TI, durante este curso comecei a me apaixonar pelo desenvolvimento web e administração de sistemas.
 
-Mas como todos os primeiros artigos/posts numa comunidade web, irei fazer uma pequena apresentaçao.
-
-Tenho neste momento 27 anos , e sou programador numa empresa que faz desenvolvimento para **SAP**.
-Tenho desenvolvido nos ultimos anos em **PHP** , **Javascript**, **Mysql/Mongodb**, sendo que este ano
-tenho aprofundado mais os meus conhecimentos em **c#/vb.net**.
-
-Além da área de programação, tambem tenho experiencia em gestão de servidores Linux,
-mais concretamente com as distribuições Debian/Arch/Fedora.
-
-No meu tempo livre sou praticante de Karaté e bombeiro voluntário.
+No momento tenho +5 anos de experiência em desenvolvimento web usando linguagens como php, html, css, js, nos últimos meses comecei a trabalhar com tecnologias de coffeescript, sass e mongodb. 
+Além disso, em minha experiência com SysAdmin, trabalhei com servidores web nginx / apache, bancos de dados mysql e mongodb, docker / jails / vmware / vagrant para virtualização e serviços de containers.

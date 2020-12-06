@@ -2,7 +2,8 @@
 title: De volta a escrita
 layout: post
 date: '2017-07-17 22:16:06 +0100'
-categories: null
+excerpt_separator: <!--more-->
+categories: []
 ---
 
 Ora viva,
@@ -10,7 +11,7 @@ Ora viva,
 Já faz algum tempo que andava afastado deste mundo dos blogs e companhia, e achei
 que estava na hora de voltar a fazer um projecto do género.
 Este projecto vai server como um repositório de experiencias e dicas na área de programaçao e sistemas.
-
+<!--more-->
 Mas como todos os primeiros artigos/posts numa comunidade web, irei fazer uma pequena apresentaçao.
 
 Tenho neste momento 27 anos , e sou programador numa empresa que faz desenvolvimento para **SAP**.

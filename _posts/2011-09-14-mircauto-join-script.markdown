@@ -2,13 +2,14 @@
 title: Auto-Join Script para Mirc
 layout: post
 date: '2011-09-14 20:24:35 +0000'
+excerpt_separator: "<!--more-->"
 categories:
 - irc
 - dicas
 ---
 
 Este é um exemplo para criar um script para fazer auto join no irc.
-
+<!--more-->
 {% highlight shell %}
 on *:START:{
     .server chat.eu.freenode.net -i

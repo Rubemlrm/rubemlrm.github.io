@@ -2,19 +2,16 @@
 title: "[Script]Gerir VirtualHosts do Apache"
 layout: post
 status: publish
-published: true
-author:
-  display_name: Rubem Mota
-  login: Rubemlrm
-  email: rubemmota89@gmail.com
-  url: ''
-categories: []
-tags: []
+excerpt_separator: <!--more-->
+categories:
+ - script
 ---
 
 Ora boas tardes,
 
 Depois de algum tempo sem escrever nada no blog , trago-vos um script em perl acabado de sair do forno que nos permite adicionar , remover , listar , verificar , desativar os nossos virtualhosts.
+
+<!--more-->
 
 Para tal temos temos ao nosso dispor as seguintes opções:
 * **-add** : para adicionar um virtualhost no apache , para tal basta usar a seguinte sintax: {% highlight shell %}sudo ./apache -add {% endhighlight %}

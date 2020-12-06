@@ -2,6 +2,7 @@
 title: Hello World em Python
 layout: post
 date: '2011-09-14 19:56:39 +0000'
+excerpt_separator: "<!--more-->"
 categories:
 - python
 - development
@@ -11,6 +12,10 @@ categories:
 Muitos de vós já ouviram falar de python e tiveram curiosidade em saber como programar em python. E com este artigo vou explicar algumas coisas de python mas apenas coisas básicas.
 
 E como tal vou utilizar o tão conhecido "Hello World" que é o programa da praxe em todas as linguagens de programação.
+
+![pythonLogo](/assets/images/python-logo.png)
+
+<!--more-->
 
 Antes de começar-mos a programar em python temos que instalar o software necessário.Para isso basta ir ao site da [Python](http://www.python.org/download/)  e fazerem download da aplicação para os vossos sistemas operativos.Caso utilizem Linux/Unix já devem trazer instalado o python para tal basta abrir o terminal e escrever "python" se der erro é porque não está instalado e terão que seguir as informações de instalação para o vosso sistema.
 

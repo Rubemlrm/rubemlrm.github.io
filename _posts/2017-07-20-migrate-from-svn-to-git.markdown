@@ -1,8 +1,12 @@
 ---
+title: Migração de SVN para GIT
 layout: post
-title:  "Migração de SVN para GIT"
-date:   2017-07-20 22:16:06 +0100
-categories: ["git", "svn", "dicas"]
+date: '2017-07-20 22:16:06 +0100'
+excerpt_separator: <!--more-->
+categories:
+- git
+- svn
+- dicas
 ---
 
 Recentemente foi-me lançado o desafio de migrar um servidor de svn para git , e comecei logo a procura de importações directas,
@@ -10,6 +14,8 @@ sendo que encontrei sugestões tais como o  [svn2git](https://github.com/nirvdru
 
 No entanto não se adequavam ao que se pretendia fazer, então após mais alguma pesquisa, encontrei várias referências a um comando do git que permitia
 clonar um repositório de SVN para Git e conseguir **manter o histórico** do mesmo sem configuraçoes extra ou programa externos. O comando em causa é o
+
+<!--more-->
 
 {% highlight shell %}
 git svn clone http://svn/

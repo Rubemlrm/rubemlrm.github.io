@@ -2,6 +2,7 @@
 title: Cron e crontab o que são ? E para que servem?
 layout: post
 date: '2011-09-14 19:57:11 +0000'
+excerpt_separator: "<!--more-->"
 categories:
 - linux
 ---
@@ -9,6 +10,10 @@ categories:
 Certamente muitos de vós já se depararam com estes 2 termos e questionaram-se sobre o que seriam e que função desempenhavam .Ambos são processos que são exclusivos de sistemas UNIX ou seja linux e openbsd entre outros.
 
 O crontab serve de  arquivo para as tarefas que queremos que sejam automatizadas como por exemplo: fazer backups , apagar ficheiros , corrigir erros do sistema , actualizar o sistema, entre outras coisas. Enquanto que o Cron vai utilizar esse arquivo e vai verificar de x em x tempo se a tarefa já foi executada ou ainda está a ser executada e verifica também a quanto tempo foi executada. Caso ainda não tenha sido executada o cron irá executar essa tarefa de forma autónoma e irá ter o nome de cronjob. De referir que é tudo executado na shell do sistema (terminal).
+
+![cronTab](/assets/images/crontab.png)
+
+<!--more-->
 
 Dito assim pode parecer muito confuso mas tentarei elucidar-vos melhor sobre isto com um caso concreto. Imaginem que querem que um script seja executado de meia em meia hora , script esse que irá fazer backup de uma pasta que vocês queiram .Para tal tem-se que "dizer" ao cron que de X em X tempo o script em questão tem que ser executado e o cron pega nessa informação e guarda-a num ficheiro crontab e a partir desse momento , o cron irá verificar de x em x tempo se o script está a ser executado ou não. Senão estiver irá executa-lo , caso esteja já a ser executado o cron não vai fazer nada alem de continuar a "vigiar" essa tarefa para o caso de alguma anomalia a afectar e então o cron volta a executa-la.
 
@@ -25,11 +30,11 @@ Enquanto que na global o cron apenas irá actuar na conta do utilizador que o cr
 Para configurar um crontab para um utilizador usa-se a seguinte sintaxe:
 
 * -l utilizador -- lista as tarefas agendadas para utilizador
-* 
+*
 * -e utilizador -- Edita o crontab
-* 
+*
 * -r utilizador -- apaga o crontab do utilizador
-* 
+*
 * -c directoria  -- especifica um directoria para o Crontab
 
 Para verificar todos os crontabs de um utilizador basta ver esta directoria:

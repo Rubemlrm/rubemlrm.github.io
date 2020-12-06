@@ -1,21 +1,17 @@
 ---
 title: Verificar máquinas de rede
 layout: post
-status: publish
-published: true
-author:
-  display_name: Rubem Mota
-  login: Rubemlrm
-  email: rubemmota89@gmail.com
-  url: ''
-categories: []
-tags: []
-comments: []
+excerpt_separator: "<!--more-->"
+categories:
+- perl
+- script
 ---
 
-<p>Boas noites, depois de algum tempo sem postar aqui nada devido a escola .Deixo aqui um pequeno script em perl que permite testar as máquinas de rede para ver quais é que estão ativas na nossa rede informática. Para tal é preciso ter um ficheiro com os ips que queremos testar e o script trata do resto sozinho.</p>
+Boas noites, depois de algum tempo sem postar aqui nada devido a escola .Deixo aqui um pequeno script em perl que permite testar as máquinas de rede para ver quais é que estão ativas na nossa rede informática. Para tal é preciso ter um ficheiro com os ips que queremos testar e o script trata do resto sozinho.
 
-```perl
+<!--more-->
+
+{% highlight perl %}
 #!/usr/bin/perl
 use warnings;
 use strict;
@@ -53,4 +49,4 @@ foreach (@reportlist){
     print FILE "$_n";
 }
 close(FILE);
-```
+{% endhighlight  %}
