@@ -1,0 +1,68 @@
+baseurl: "https://rubemlrm.me/"
+title: Rubem Mota
+theme: ghostwriter
+languageCode: pt-PT
+copyright: Rubem Mota
+pygmentsUseClasses: true
+pygmentsCodefences: true
+
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: false
+    hl_Lines: ""
+    lineAnchors: ""
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    style: monokai
+    tabWidth: 4
+
+privacy:
+  disqus:
+    disable: true
+  googleAnalytics:
+    anonymizeIP: true
+    respectDoNotTrack: true
+    useSessionStorage: false
+
+author:
+  name: Rubem Mota
+  profile: ""
+
+taxonomies:
+  tag: tags
+
+params:
+  mainSections:
+    - post
+  intro: true
+  headline: Rubem Mota
+  description: Software Geek
+  github: "https://github.com/rubemlrm"
+  gitlab: "https://gitlab.com/rubemlrm"
+  linkedin: "https://linkedin.com/in/rubemlrm/"
+  twitter: "https://twitter.com/rubemlrm"
+  email: rubemmota89@gmail.com
+  opengraph: true
+  shareTwitter: true
+  rss: true
+  shareFacebook: true
+  shareLinkedIn: false
+  dateFormat: "Mon, Jan 2, 2006"
+  exponeaJsUrl: ""
+  exponeaTarget: ""
+  exponeaToken: ""
+  exponeaTrackVisits: false
+  readingTime: true
+  readingTimeText: "Estimated reading time:"
+permalinks:
+  post: "/:year/:month/:day/:filename/"
+
+menu:
+  main:
+    - name: Blog
+      url: /
+      weight: 1
