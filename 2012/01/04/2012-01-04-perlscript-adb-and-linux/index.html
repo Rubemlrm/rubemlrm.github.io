@@ -1,0 +1,72 @@
+<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Script Adb and Linux &#183; Rubem Mota</title><meta name=description content="Cada vez mais existem pessoas a utilizar Android e Linux e muitas deles tem dificuldades em por o adb a funcionar com Linux por causa de se ter que configurar regras ou então saber os valores para as coisas. Decidi então criar um pequeno script em perl para agilizar este processo e tornando a vida do pessoal mais fácil quando trabalham com isto."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.81.0"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="Script Adb and Linux"><meta property="og:description" content="Cada vez mais existem pessoas a utilizar Android e Linux e muitas deles tem dificuldades em por o adb a funcionar com Linux por causa de se ter que configurar regras ou então saber os valores para as coisas. Decidi então criar um pequeno script em perl para agilizar este processo e tornando a vida do pessoal mais fácil quando trabalham com isto."><meta property="og:type" content="article"><meta property="og:url" content="https://rubemlrm.me/2012/01/04/2012-01-04-perlscript-adb-and-linux/"><link rel=stylesheet href=https://rubemlrm.me/dist/site.css><link rel=stylesheet href=https://rubemlrm.me/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://rubemlrm.me/>Rubem Mota</a></h1><a class=button-square href=https://rubemlrm.me/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Twitter aria-label=Twitter href=https://twitter.com/rubemlrm rel=me><i class="fa fa-twitter" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Gitlab aria-label=Gitlab href=https://gitlab.com/rubemlrm rel=me><i class="fa fa-gitlab" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/rubemlrm rel=me><i class="fa fa-github-alt" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://linkedin.com/in/rubemlrm/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:rubemmota89@gmail.com><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li></ul></div></header><div id=container><div class=container><article class=post-container itemscope itemtype=http://schema.org/BlogPosting><header class=post-header><h1 class=post-title itemprop="name headline">Script Adb and Linux</h1><p class=post-date><span>Published <time datetime=2012-01-04 itemprop=datePublished>Wed, Jan 4, 2012</time></span>
+<span>by</span>
+<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=# itemprop=url rel=author>Rubem Mota</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 2 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>Cada vez mais existem pessoas a utilizar Android e Linux e muitas deles tem dificuldades em por o adb a funcionar com Linux por causa de se ter que configurar regras ou então saber os valores para as coisas. Decidi então criar um pequeno script em perl para agilizar este processo e tornando a vida do pessoal mais fácil quando trabalham com isto.</p><div class=highlight><pre class=chroma><code class=language-perl data-lang=perl><span class=c1>#Developer by : Rubem Mota</span>
+<span class=c1>#Dont use to earn money and keep all copyrights reserved to me</span>
+<span class=c1>#Twitter: @rubemlrm</span>
+<span class=k>use</span> <span class=nn>strict</span><span class=p>;</span>
+<span class=nb>chomp</span><span class=p>(</span><span class=k>my</span> <span class=nv>@rules</span> <span class=o>=</span> <span class=p>(</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;0502&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;413c&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;0489&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;091E&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;0bb4&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;12d1&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;0482&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;1004&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;22b8&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;0955&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;10A9&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;04e8&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;04dd&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;0fce&#34;, MODE=&#34;0666&#34;&#39;</span><span class=p>,</span>
+    <span class=s>&#39;SUBSYSTEM==&#34;usb&#34;, SYSFS{idVendor}==&#34;19D2&#34;, MODE=&#34;0666&#34;&#39;</span>
+<span class=p>));</span>
+<span class=k>my</span> <span class=nv>@brands</span> <span class=o>=</span> <span class=sx>qw (
+</span><span class=sx> </span>   <span class=n>Acer</span>
+    <span class=n>Dell</span>
+    <span class=n>Foxconn</span>
+    <span class=n>Garmin</span><span class=o>-</span><span class=n>Asus</span>
+    <span class=n>HTC</span>
+    <span class=n>Huawei</span>
+    <span class=n>Kyocera</span>
+    <span class=n>LG</span>
+    <span class=n>Motorola</span>
+    <span class=n>Nvidia</span>
+    <span class=n>Pantech</span>
+    <span class=n>Samsung</span>
+    <span class=n>Sharp</span>
+    <span class=n>SonyEricsson</span>
+    <span class=n>ZTE</span>
+<span class=p>);</span>
+<span class=k>my</span> <span class=nv>$i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$uid</span> <span class=o>=</span> <span class=sb>`id -u`</span><span class=p>;</span>
+<span class=c1>#Checking if user is root or not</span>
+<span class=k>if</span> <span class=p>(</span> <span class=nv>$uid</span> <span class=o>!=</span> <span class=mi>0</span> <span class=p>){</span>
+    <span class=k>print</span> <span class=s>&#34;you need root priveleges to run this scriptn&#34;</span><span class=p>;</span>
+<span class=p>}</span><span class=k>else</span><span class=p>{</span>
+    <span class=c1>#running the import part of script</span>
+    <span class=k>print</span> <span class=s>&#34;------------------------------:n&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=s>&#34;:Welcome to Adb rule creator :n&#34;</span><span class=p>;</span>
+    <span class=c1>#it will create the list to choose brand</span>
+    <span class=k>foreach</span><span class=p>(</span><span class=nv>@brands</span><span class=p>){</span>
+        <span class=k>print</span> <span class=s>&#34;.&#34;</span><span class=o>.</span><span class=nv>$i</span><span class=o>++</span> <span class=o>.</span><span class=s>&#34;=&gt;&#34;</span><span class=o>.</span> <span class=nv>$_</span> <span class=o>.</span><span class=s>&#34;n&#34;</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>print</span> <span class=s>&#34;:Choose driver brand:n&#34;</span><span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=k>my</span> <span class=nv>$opt</span> <span class=o>=</span> <span class=sr>&lt;STDIN&gt;</span><span class=p>);</span>
+    <span class=c1>#condition to check input</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$opt</span> <span class=o>=~</span><span class=sr> /D/</span><span class=p>){</span>
+        <span class=k>print</span> <span class=s>&#34;Invalid Option choose againn&#34;</span><span class=p>;</span>
+        <span class=k>print</span> <span class=s>&#34;:Choose driver brand:n&#34;</span><span class=p>;</span>
+        <span class=nb>chomp</span><span class=p>(</span><span class=k>my</span> <span class=nv>$opt</span> <span class=o>=</span> <span class=sr>&lt;STDIN&gt;</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=k>print</span> <span class=s>&#34;It will be created adb rules to &#34;</span> <span class=o>.</span> <span class=nv>$brands</span><span class=p>[</span><span class=nv>$opt</span> <span class=o>-</span> <span class=mi>1</span><span class=p>]</span> <span class=o>.</span><span class=s>&#34;n&#34;</span><span class=p>;</span>
+    <span class=c1>#filehandle to create rule</span>
+    <span class=nb>open</span><span class=p>(</span><span class=n>FILE</span> <span class=p>,</span> <span class=s>&#34;&gt;&gt;/etc/udev/rules.d/51-android.rules&#34;</span><span class=p>);</span>
+    <span class=k>print</span> <span class=n>FILE</span> <span class=nv>$rules</span><span class=p>[</span><span class=nv>$opt</span> <span class=o>-</span> <span class=mi>1</span><span class=p>];</span>
+    <span class=nb>system</span><span class=p>(</span><span class=s>&#34;chmod a+r /etc/udev/rules.d/51-android.rules&#34;</span><span class=p>);</span>
+    <span class=nb>close</span><span class=p>(</span><span class=n>FILE</span><span class=p>);</span>
+    <span class=k>print</span> <span class=s>&#34;Restarting services&#34;</span><span class=p>;</span>
+    <span class=nb>system</span> <span class=p>(</span><span class=s>&#34;/etc/init.d/udev restart&#34;</span><span class=p>);</span>
+    <span class=k>print</span> <span class=s>&#34;All done&#34;</span><span class=p>;</span>
+<span class=p>}</span></code></pre></div><p>Depois de fazerem download do script façam:<div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>chmod +x &lt;nome de ficheiro&gt;</code></pre></div></p></div><footer class="post-footer clearfix"><div class=share><a class=icon-twitter href="https://twitter.com/share?text=Script%20Adb%20and%20Linux&url=https%3a%2f%2frubemlrm.me%2f2012%2f01%2f04%2f2012-01-04-perlscript-adb-and-linux%2f" onclick="return window.open(this.href,'twitter-share','width=550,height=235'),!1" aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a><a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2frubemlrm.me%2f2012%2f01%2f04%2f2012-01-04-perlscript-adb-and-linux%2f" onclick="return window.open(this.href,'facebook-share','width=580,height=296'),!1" aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://rubemlrm.me/>Rubem Mota</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2017 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://rubemlrm.me/js/jquery-1.11.3.min.js></script><script src=https://rubemlrm.me/js/jquery.fitvids.js></script><script src=https://rubemlrm.me/js/scripts.js></script></body></html>

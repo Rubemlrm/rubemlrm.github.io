@@ -1,0 +1,196 @@
+<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Gerir Cron's com o Perl &#183; Rubem Mota</title><meta name=description content="Bem pessoal aqui fica um pequeno script para vos ajudar a a automatizar as vossas tarefas quando tiverem que mexer em crontabs.Este script surgiu numa aula de Sistemas Operativos em que tínhamos um exercício em que tínhamos que adicionar novos crons com o script. Mas para não limitar o script acrescentei mais umas funções.Tais como tornar a criação de um novo cron mais interactiva , apagar crons , gravar o cron na localização correcta consoante o utilizador que está a executar o script."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.81.0"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="Gerir Cron's com o Perl"><meta property="og:description" content="Bem pessoal aqui fica um pequeno script para vos ajudar a a automatizar as vossas tarefas quando tiverem que mexer em crontabs.Este script surgiu numa aula de Sistemas Operativos em que tínhamos um exercício em que tínhamos que adicionar novos crons com o script. Mas para não limitar o script acrescentei mais umas funções.Tais como tornar a criação de um novo cron mais interactiva , apagar crons , gravar o cron na localização correcta consoante o utilizador que está a executar o script."><meta property="og:type" content="article"><meta property="og:url" content="https://rubemlrm.me/2012/01/24/2012-01-24-perlscript-setup-crontab/"><link rel=stylesheet href=https://rubemlrm.me/dist/site.css><link rel=stylesheet href=https://rubemlrm.me/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://rubemlrm.me/>Rubem Mota</a></h1><a class=button-square href=https://rubemlrm.me/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Twitter aria-label=Twitter href=https://twitter.com/rubemlrm rel=me><i class="fa fa-twitter" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Gitlab aria-label=Gitlab href=https://gitlab.com/rubemlrm rel=me><i class="fa fa-gitlab" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/rubemlrm rel=me><i class="fa fa-github-alt" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://linkedin.com/in/rubemlrm/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a><a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:rubemmota89@gmail.com><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li></ul></div></header><div id=container><div class=container><article class=post-container itemscope itemtype=http://schema.org/BlogPosting><header class=post-header><h1 class=post-title itemprop="name headline">Gerir Cron's com o Perl</h1><p class=post-date><span>Published <time datetime=2012-01-24 itemprop=datePublished>Tue, Jan 24, 2012</time></span>
+<span>by</span>
+<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=# itemprop=url rel=author>Rubem Mota</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 4 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>Bem pessoal aqui fica um pequeno script para vos ajudar a a automatizar as vossas tarefas quando tiverem que mexer em crontabs.Este script surgiu numa aula de Sistemas Operativos em que tínhamos um exercício em que tínhamos que adicionar novos crons com o script. Mas para não limitar o script acrescentei mais umas funções.Tais como tornar a criação de um novo cron mais interactiva , apagar crons , gravar o cron na localização correcta consoante o utilizador que está a executar o script.</p><div class=highlight><pre class=chroma><code class=language-perl data-lang=perl><span class=ch>#!/usr/bin/perl</span>
+<span class=c1>#Developed by : Rubem Mota</span>
+<span class=c1>#Dont use to earn money and keep all copyrights reserved to me</span>
+<span class=c1>#Twitter: @rubemlrm</span>
+<span class=k>package</span> <span class=nn>SysAdmin</span><span class=p>;</span>
+<span class=k>use</span> <span class=nn>warnings</span><span class=p>;</span>
+<span class=k>use</span> <span class=nn>strict</span><span class=p>;</span>
+<span class=k>use</span> <span class=nn>autodie</span><span class=p>;</span>
+<span class=c1>#declaração de variáveis</span>
+<span class=k>my</span> <span class=nv>$min</span> <span class=p>;</span>
+<span class=k>my</span> <span class=nv>$horas</span> <span class=p>;</span>
+<span class=k>my</span> <span class=nv>$dia</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$mes</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$diasemana</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$uid</span> <span class=o>=</span> <span class=sb>`id -u`</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$opt</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$comando</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$user</span><span class=p>;</span>
+<span class=k>my</span> <span class=nv>$val</span><span class=p>;</span>
+<span class=c1>#funções a ser chamadas</span>
+<span class=o>&amp;</span><span class=n>Main</span><span class=p>();</span>
+<span class=c1>#funções</span>
+<span class=k>sub</span> <span class=nf>Main</span><span class=p>(){</span>
+    <span class=k>print</span> <span class=s>&#34;Bem vindo a área de gestõa crontabn&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=s>&#34;Se deseja eliminar um cron pressione tecla Dn&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=s>&#34;se deseja adicionar um cron pressiona a tecla An&#34;</span><span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$opt</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span> <span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;D&#34;</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>Eliminar</span><span class=p>();</span>
+    <span class=p>}</span><span class=k>elsif</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;A&#34;</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>Adicionar</span><span class=p>();</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=k>print</span> <span class=s>&#34;Opção inválida&#34;</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>Eliminar</span><span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$uid</span> <span class=o>!=</span> <span class=mi>0</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>User</span><span class=p>();</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;nano /var/spool/cron/crontabs/$user&#34;</span><span class=p>);</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;sleep 2&#34;</span><span class=p>);</span>
+        <span class=k>print</span> <span class=s>&#34;Processo Concluido.A retornar para o menu inicialn&#34;</span><span class=p>;</span>
+        <span class=nb>system</span> <span class=p>(</span><span class=s>&#34;sleep 2&#34;</span><span class=p>);</span>
+        <span class=o>&amp;</span><span class=n>Main</span><span class=p>();</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;nano /etc/crontab&#34;</span><span class=p>);</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;sleep 2&#34;</span><span class=p>);</span>
+        <span class=k>print</span> <span class=s>&#34;Processo Concluido.A retornar para o menu inicialn&#34;</span><span class=p>;</span>
+        <span class=nb>system</span> <span class=p>(</span><span class=s>&#34;sleep 2&#34;</span><span class=p>);</span>
+        <span class=o>&amp;</span><span class=n>Main</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>Adicionar</span><span class=p>{</span>
+    <span class=o>&amp;</span><span class=n>Minutos</span><span class=p>();</span>
+    <span class=o>&amp;</span><span class=n>Horas</span><span class=p>();</span>
+    <span class=o>&amp;</span><span class=n>Dia</span><span class=p>();</span>
+    <span class=o>&amp;</span><span class=n>Mes</span><span class=p>();</span>
+    <span class=o>&amp;</span><span class=n>DiaSemana</span><span class=p>();</span>
+    <span class=o>&amp;</span><span class=n>Comando</span><span class=p>();</span>
+    <span class=o>&amp;</span><span class=n>Final</span><span class=p>();</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>Minutos</span><span class=p>{</span>
+    <span class=k>print</span> <span class=s>&#34;Introduza os parametros de agendamenton&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=s>&#34;Introduza os minutosn&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34;Se desejar que o script seja executado em todos os minutos - pressione an&#34;</span><span class=p>);</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34;Se desejar especificar o minuto - pressione c n&#34;</span><span class=p>);</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$opt</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;a&#34;</span><span class=p>){</span>
+        <span class=nv>$min</span> <span class=o>=</span> <span class=s>&#34;*&#34;</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>elsif</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;c&#34;</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>Validar</span><span class=p>();</span>
+        <span class=nv>$min</span><span class=o>=</span><span class=nv>$val</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=k>print</span> <span class=s>&#34;opção inválidan&#34;</span><span class=p>;</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;clear&#34;</span><span class=p>);</span>
+        <span class=o>&amp;</span><span class=n>Minutos</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>Horas</span><span class=p>{</span>
+    <span class=k>print</span> <span class=s>&#34;Introduza as horasn&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34;Se desejar que o script seja executado em todos as horas - pressione an&#34;</span><span class=p>);</span>
+    <span class=k>print</span><span class=p>(</span><span class=s>&#34;Se desejar especificar as horas - pressione c n&#34;</span><span class=p>)</span> <span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$opt</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;a&#34;</span><span class=p>){</span>
+        <span class=nv>$horas</span> <span class=o>=</span> <span class=s>&#34;*&#34;</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>elsif</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;c&#34;</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>Validar</span><span class=p>();</span>
+        <span class=nv>$horas</span> <span class=o>=</span> <span class=nv>$val</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;clear&#34;</span><span class=p>);</span>
+        <span class=k>print</span> <span class=s>&#34;opção inválidan&#34;</span><span class=p>;</span>
+        <span class=o>&amp;</span><span class=n>Horas</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>Dia</span><span class=p>{</span>
+    <span class=k>print</span> <span class=s>&#34;Introduza os dian&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34;Se desejar que o script seja executado em todos os dias - pressione an&#34;</span><span class=p>);</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34;Se desejar especificar o dia - pressione c n&#34;</span><span class=p>)</span> <span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$opt</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;a&#34;</span><span class=p>){</span>
+        <span class=nv>$dia</span> <span class=o>=</span> <span class=s>&#34;*&#34;</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>elsif</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;c&#34;</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>Validar</span><span class=p>();</span>
+        <span class=nv>$dia</span> <span class=o>=</span> <span class=nv>$val</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=k>print</span> <span class=s>&#34;opção inválidan&#34;</span><span class=p>;</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;clear&#34;</span><span class=p>);</span>
+        <span class=o>&amp;</span><span class=n>Dia</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>Mes</span><span class=p>{</span>
+    <span class=k>print</span> <span class=s>&#34;mesn&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34;Se desejar que o script seja executado todos os meses - pressione an&#34;</span><span class=p>);</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34; Se desejar especificar o mes - pressione c n&#34;</span><span class=p>)</span> <span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$opt</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;a&#34;</span><span class=p>){</span>
+        <span class=nv>$mes</span> <span class=o>=</span> <span class=s>&#34;*&#34;</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>elsif</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;c&#34;</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>Validar</span><span class=p>();</span>
+        <span class=nv>$mes</span><span class=o>=</span> <span class=nv>$val</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=k>print</span> <span class=s>&#34;opção inválidan&#34;</span><span class=p>;</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;clear&#34;</span><span class=p>);</span>
+        <span class=o>&amp;</span><span class=n>Mes</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>DiaSemana</span><span class=p>{</span>
+    <span class=k>print</span> <span class=s>&#34;Dia da Semann&#34;</span><span class=p>;</span>
+    <span class=k>print</span><span class=p>(</span><span class=s>&#34;Se desejar que o script seja executado todos os diass - pressione an&#34;</span><span class=p>);</span>
+    <span class=k>print</span><span class=p>(</span><span class=s>&#34;Se desejar especificar o dia - pressione c n&#34;</span><span class=p>)</span> <span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$opt</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;a&#34;</span><span class=p>){</span>
+        <span class=nv>$diasemana</span><span class=o>=</span><span class=s>&#34;*&#34;</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>elsif</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;c&#34;</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>Validar</span><span class=p>();</span>
+        <span class=nv>$diasemana</span> <span class=o>=</span> <span class=nv>$val</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=k>print</span> <span class=s>&#34;opção inválidan&#34;</span><span class=p>;</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;clear&#34;</span><span class=p>);</span>
+        <span class=o>&amp;</span><span class=n>DiaSemana</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>Comando</span><span class=p>(){</span>
+    <span class=k>print</span> <span class=p>(</span><span class=s>&#34;Introduza o comando ou script a executarn&#34;</span><span class=p>);</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=k>my</span> <span class=nv>$script</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=nv>$comando</span> <span class=o>=</span> <span class=nv>$script</span><span class=p>;</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>User</span><span class=p>(){</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$user</span> <span class=o>=</span> <span class=sb>`whoami`</span><span class=p>);</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>ChUser</span><span class=p>(){</span>
+    <span class=k>print</span> <span class=s>&#34;Escolha o utilizador que vai executar o script/comandon&#34;</span><span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$user</span> <span class=o>=</span> <span class=p>);</span>
+<span class=p>}</span>
+<span class=c1>#funcoes de validação</span>
+<span class=k>sub</span> <span class=nf>Validar</span><span class=p>(){</span>
+    <span class=k>print</span> <span class=s>&#34;Introduza o valorn&#34;</span><span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$val</span> <span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$val</span> <span class=o>=~</span><span class=sr> /d,?/</span><span class=p>?</span><span class=o>-</span><span class=p>?</span><span class=o>/</span><span class=p>){</span>
+        <span class=k>print</span> <span class=s>&#34;Valor guardadon&#34;</span><span class=p>;</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;clear&#34;</span><span class=p>);</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=o>&amp;</span><span class=n>ErrorVal</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=k>sub</span> <span class=nf>ErrorVal</span><span class=p>(){</span>
+    <span class=k>print</span> <span class=s>&#34;Valor inválidon&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=s>&#34;Deseja sair ? se sim pressione Sn&#34;</span><span class=p>;</span>
+    <span class=k>print</span> <span class=s>&#34;Senão, se quiser voltar a repetir este passo pressione R&#34;</span><span class=p>;</span>
+    <span class=nb>chomp</span><span class=p>(</span><span class=nv>$opt</span><span class=o>=</span> <span class=p>);</span>
+    <span class=k>if</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;S&#34;</span><span class=p>){</span>
+        <span class=nb>exit</span><span class=p>;</span>
+    <span class=p>}</span><span class=k>elsif</span><span class=p>(</span><span class=nv>$opt</span> <span class=ow>eq</span> <span class=s>&#34;R&#34;</span><span class=p>){</span>
+        <span class=nb>system</span><span class=p>(</span><span class=s>&#34;clear&#34;</span><span class=p>);</span>
+        <span class=o>&amp;</span><span class=n>Validar</span><span class=p>();</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=k>print</span> <span class=s>&#34;Opção erradan&#34;</span><span class=p>;</span>
+        <span class=o>&amp;</span><span class=n>ErrorVal</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=c1>#função relativa a verificaçao do user id e sua respectiva config-</span>
+<span class=k>sub</span> <span class=nf>Final</span><span class=p>(){</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nv>$uid</span> <span class=o>!=</span> <span class=mi>0</span><span class=p>){</span>
+        <span class=o>&amp;</span><span class=n>User</span><span class=p>();</span>
+        <span class=nb>open</span><span class=p>(</span><span class=n>FILE</span><span class=p>,</span> <span class=s>&#34;&gt;&gt;/var/spool/cron/crontabs/$user&#34;</span><span class=p>);</span>
+        <span class=k>print</span> <span class=n>FILE</span> <span class=s>&#34;$min $horas $mes $dia $diasemana $comandon&#34;</span><span class=p>;</span>
+        <span class=nb>close</span><span class=p>(</span><span class=n>FILE</span><span class=p>);</span>
+    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+        <span class=o>&amp;</span><span class=n>ChUser</span><span class=p>();</span>
+        <span class=nb>open</span><span class=p>(</span><span class=n>FILE</span><span class=p>,</span> <span class=s>&#34;&gt;&gt;/etc/crontab&#34;</span><span class=p>);</span>
+        <span class=k>print</span> <span class=n>FILE</span> <span class=s>&#34;$min $horas $mes $dia $diasemana $user $comandon&#34;</span><span class=p>;</span>
+        <span class=nb>close</span><span class=p>(</span><span class=n>FILE</span><span class=p>);</span>
+    <span class=p>}</span>
+<span class=p>}</span></code></pre></div></div><footer class="post-footer clearfix"><div class=share><a class=icon-twitter href="https://twitter.com/share?text=Gerir%20Cron%27s%20com%20o%20Perl&url=https%3a%2f%2frubemlrm.me%2f2012%2f01%2f24%2f2012-01-24-perlscript-setup-crontab%2f" onclick="return window.open(this.href,'twitter-share','width=550,height=235'),!1" aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a><a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2frubemlrm.me%2f2012%2f01%2f24%2f2012-01-24-perlscript-setup-crontab%2f" onclick="return window.open(this.href,'facebook-share','width=580,height=296'),!1" aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://rubemlrm.me/>Rubem Mota</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2017 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://rubemlrm.me/js/jquery-1.11.3.min.js></script><script src=https://rubemlrm.me/js/jquery.fitvids.js></script><script src=https://rubemlrm.me/js/scripts.js></script></body></html>
