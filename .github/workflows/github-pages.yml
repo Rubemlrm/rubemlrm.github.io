@@ -18,4 +18,4 @@ jobs:
         uses: chabad360/hugo-gh-pages@master
         with:
           githubToken: ${{ secrets.JEKYLL_PAT }}
-          cname: rubemlrm.me # Or anything else
+          cname: rubemlrm.com # Or anything else
